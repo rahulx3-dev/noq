@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "672868290185",
+    "project_id": "qcutapp-2026",
+    "storage_bucket": "qcutapp-2026.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672868290185:android:8884a90ed874f7b0240058",
+        "android_client_info": {
+          "package_name": "com.example.qcutapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-Rse2Blr590TOMXRln7F9I-ayyT4EXak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

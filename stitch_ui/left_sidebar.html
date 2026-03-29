@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #000000;
+            --accent: #FF4B3A;
+            --surface: #F8F9FA;
+            --card-bg: #FFFFFF;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--surface);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .food-card-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+        }
+        .nav-shadow {
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.03);
+        }
+        .sidebar-shadow {
+            box-shadow: 10px 0 40px rgba(0,0,0,0.1);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="max-w-md mx-auto min-h-screen relative pb-28 overflow-hidden">
+<div class="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-[60]"></div>
+<aside class="fixed top-0 left-0 bottom-0 w-[280px] bg-white z-[70] sidebar-shadow flex flex-col pt-12">
+<div class="px-6 mb-10 flex items-center gap-3">
+<div>
+<h2 class="font-bold text-[24px] text-gray-900 leading-tight">Today's menu</h2>
+</div>
+</div>
+<nav class="flex-1 px-4">
+<div class="flex flex-col gap-6 px-4 py-2 text-gray-500">
+<span class="text-[15px] font-medium">Cheese Margherita</span>
+<span class="text-[15px] font-medium">Chicken Burger</span>
+<span class="text-[15px] font-medium">Hakka Noodles</span>
+<span class="text-[15px] font-medium">Paneer Tikka Roll</span>
+<span class="text-[15px] font-medium">Veg Loaded Pizza</span>
+<span class="text-[15px] font-medium">French Fries</span>
+<span class="text-[15px] font-medium">Classic Cold Coffee</span>
+</div>
+</nav>
+</aside>
+<header class="px-5 pt-10 pb-4 bg-[var(--surface)] sticky top-0 z-50">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h1 class="text-[28px] font-bold tracking-tight text-gray-900 leading-none">Hi, Alex!</h1>
+<p class="text-gray-500 text-[15px] mt-1">Hungry for something new?</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="relative w-11 h-11 bg-white rounded-full shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+<span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<button class="w-11 h-11 bg-white rounded-full shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+</button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 text-[22px]">search</span>
+</div>
+<input class="w-full bg-white border-none rounded-2xl py-4 pl-12 pr-4 text-[15px] shadow-sm focus:ring-2 focus:ring-black transition-all" placeholder="Search for food..." type="text"/>
+</div>
+</header>
+<section class="mt-2 flex items-center gap-3 px-5">
+<div class="overflow-x-auto no-scrollbar">
+<div class="flex gap-2 whitespace-nowrap">
+<button class="bg-black text-white px-6 py-2.5 rounded-full text-[14px] font-semibold">All Items</button>
+<button class="bg-white text-gray-600 border border-gray-50 px-6 py-2.5 rounded-full text-[14px] font-medium shadow-sm">Recent</button>
+<button class="bg-white text-gray-600 border border-gray-50 px-6 py-2.5 rounded-full text-[14px] font-medium shadow-sm">Trending</button>
+<button class="bg-white text-gray-600 border border-gray-50 px-6 py-2.5 rounded-full text-[14px] font-medium shadow-sm">Veg</button>
+</div>
+</div>
+</section>
+<main class="px-5 mt-6 grid grid-cols-2 gap-4">
+<div class="bg-white rounded-[32px] p-3 food-card-shadow border border-gray-50 flex flex-col">
+<div class="relative aspect-square rounded-[24px] overflow-hidden mb-3">
+<img alt="Pizza" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5NdrRTmJZohIsAr5pNcQg9Yx02sq2ezafNaztP-YkgQJ-3K4Q6rqy26s1xTt_lCivQXk5I55E21H4pV674CtKQeFeBbOlYf3Qi9rAmZ5p6eJSaBZ5hHGrgoJSG41GA2w_-FHjvZkFXDWiD9NOqBmwcKNRmq5jnyh_Ob6bHVBt6esJoi78viL-6OHQ9aKdeZvq4ZaB9q26-KOoVPJJEpG7SN_g01S7l6yrFIs_kFwEL8H-sqTvqYlx3nZahWf9kd33iPxDxfj9MYg"/>
+<div class="absolute top-2 left-2 bg-black/70 backdrop-blur-md px-2.5 py-1.5 rounded-xl">
+<span class="text-[10px] font-bold text-white uppercase tracking-wider">15 LEFT</span>
+</div>
+</div>
+<div class="px-1 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-bold text-[15px] leading-tight mb-1">Cheese Margherita</h3>
+<p class="text-gray-400 text-[12px] mb-3 line-clamp-1">Fresh Basil &amp; Mozzarella</p>
+</div>
+<div class="flex items-center justify-between mt-auto pb-1">
+<span class="font-bold text-[18px]">₹149</span>
+<button class="w-9 h-9 bg-black rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-white text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-[32px] p-3 food-card-shadow border border-gray-50 flex flex-col">
+<div class="relative aspect-square rounded-[24px] overflow-hidden mb-3">
+<img alt="Burger" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1kVuxRZXc-E32_WTY-HgphYJch6Hu4AiGzFhrxpGm5SUmhVKw_j7ntqn2QlLbvHLnysK_dfESG4tua57fUtEuvaLk7FF9opNgZHSXLpUm4jBTzw2Y7k8kiub7rO8YBbMlQpf4Deyd-p8SPrB4SYMvOvk0I-98Cu8jqIF1J_m7IqV6DUnfZgCKyabtbp3hLTn9wS0ZO9WndnmpV7Qf70bjhZf4fAUogNyz_UPovw_eyc-rQOxuE-1AI9TMqZzCpEceghJeIaQia2g"/>
+<div class="absolute top-2 left-2 bg-black/70 backdrop-blur-md px-2.5 py-1.5 rounded-xl">
+<span class="text-[10px] font-bold text-white uppercase tracking-wider">8 LEFT</span>
+</div>
+</div>
+<div class="px-1 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-bold text-[15px] leading-tight mb-1">Chicken Burger</h3>
+<p class="text-gray-400 text-[12px] mb-3 line-clamp-1">Spicy patty &amp; veggies</p>
+</div>
+<div class="flex items-center justify-between mt-auto pb-1">
+<span class="font-bold text-[18px]">₹120</span>
+<button class="w-9 h-9 bg-black rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-white text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-[32px] p-3 food-card-shadow border border-gray-50 flex flex-col">
+<div class="relative aspect-square rounded-[24px] overflow-hidden mb-3">
+<img alt="Noodles" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqYsD_ZYRDKVA4TtHikE1YBCOl3lseSshtaXWanmR-dbXoXWD3ndwREtzXRfEjtVm1rM9CEsG1d6slNU8Qo4F-g7VLlce0B8y75TGNgUjBUiGaQwcHWWMND2wtSR6nC-DV9YOT4pp9H-wcaLSV3MD4suy0SF9R9835Ry_ynjUbWTlogk8BwgVH1ceULD7GjQzZvF--VttYqOFnUBZew3HIz10J7D-bR_VSPIFbxE9JJjKJ2XpBmFZbFlM-iCOmbodY6tMVRl4g3HI"/>
+<div class="absolute top-2 left-2 bg-black/70 backdrop-blur-md px-2.5 py-1.5 rounded-xl">
+<span class="text-[10px] font-bold text-white uppercase tracking-wider">20 LEFT</span>
+</div>
+</div>
+<div class="px-1 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-bold text-[15px] leading-tight mb-1">Hakka Noodles</h3>
+<p class="text-gray-400 text-[12px] mb-3 line-clamp-1">Street style classic</p>
+</div>
+<div class="flex items-center justify-between mt-auto pb-1">
+<span class="font-bold text-[18px]">₹85</span>
+<button class="w-9 h-9 bg-black rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-white text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-[32px] p-3 food-card-shadow border border-gray-50 flex flex-col">
+<div class="relative aspect-square rounded-[24px] overflow-hidden mb-3">
+<img alt="Roll" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgD5kH05_1jlHseQovcgc73w--nTS8JQIhKQYLHx4_IvfOGyVjR02KGK45wdEWlnraVSn0J_-ksWnwwx1vNYrGDfF0DNyJ-ZAp8s_RI0zyCmEg-uwdup1DGniOOzpB3vudSCbP_0uzoIpRn_7kpZlaZhGpB_oSeu59eRTqLf7IvArgOAoP3dexWbNrn1WBi_NDaIXvO3WhRSOOIsLnFCTGWxM6AIBx7i_N_7EoRUnGq8JYXdSE9438_w5ktg3prZK2oooRgE9EVNE"/>
+<div class="absolute top-2 left-2 bg-black/70 backdrop-blur-md px-2.5 py-1.5 rounded-xl">
+<span class="text-[10px] font-bold text-white uppercase tracking-wider">12 LEFT</span>
+</div>
+</div>
+<div class="px-1 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-bold text-[15px] leading-tight mb-1">Paneer Tikka Roll</h3>
+<p class="text-gray-400 text-[12px] mb-3 line-clamp-1">Tandoori spices</p>
+</div>
+<div class="flex items-center justify-between mt-auto pb-1">
+<span class="font-bold text-[18px]">₹110</span>
+<button class="w-9 h-9 bg-black rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-white text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t border-gray-50 flex items-center justify-around py-3 px-6 z-50 nav-shadow">
+<a class="flex flex-col items-center gap-1 text-black" href="#">
+<span class="material-symbols-outlined fill-1 text-[26px]">home</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400" href="#">
+<span class="material-symbols-outlined text-[26px]">receipt_long</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400" href="#">
+<span class="material-symbols-outlined text-[26px]">confirmation_number</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Token</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400" href="#">
+<span class="material-symbols-outlined text-[26px]">person</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+
+</body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stock Carryover Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ECC8",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102212",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "32": "32px",
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --carryover-green: #13ECC8;
+        }
+        .custom-checkbox {
+            @apply h-6 w-6 rounded border-slate-300 text-[var(--carryover-green)] focus:ring-[var(--carryover-green)];
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-slate-200 dark:bg-slate-950 min-h-screen flex items-center justify-center p-4">
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
+<div class="relative z-10 w-full max-w-[440px] bg-white dark:bg-slate-900 rounded-32 shadow-2xl overflow-hidden border border-white/20">
+<div class="px-8 pt-8 pb-6">
+<div class="flex items-center justify-between mb-2">
+<span class="bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Session End</span>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">Stock Carryover</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-2 font-medium">Select items to move from <span class="text-orange-500 font-bold">Lunch</span> to <span class="text-primary font-bold">Tea Session</span>.</p>
+</div>
+<div class="px-8 py-4 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between border-y border-slate-100 dark:border-slate-800">
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Remaining Items</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<span class="mr-3 text-xs font-bold text-slate-500 dark:text-slate-400">SELECT ALL</span>
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[var(--carryover-green)]"></div>
+</label>
+</div>
+<div class="px-4 py-2 max-h-[400px] overflow-y-auto">
+<div class="space-y-1">
+<label class="flex items-center justify-between p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">lunch_dining</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Chicken Wrap</p>
+<p class="text-sm text-emerald-500 font-bold">12 Left in stock</p>
+</div>
+</div>
+<input checked="" class="custom-checkbox" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">coffee</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Iced Coffee</p>
+<p class="text-sm text-emerald-500 font-bold">8 Left in stock</p>
+</div>
+</div>
+<input checked="" class="custom-checkbox" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">cookie</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Choco Cookie</p>
+<p class="text-sm text-emerald-500 font-bold">24 Left in stock</p>
+</div>
+</div>
+<input checked="" class="custom-checkbox" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">local_bar</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Fruit Punch</p>
+<p class="text-sm text-emerald-500 font-bold">5 Left in stock</p>
+</div>
+</div>
+<input checked="" class="custom-checkbox" type="checkbox"/>
+</label>
+</div>
+</div>
+<div class="p-8 mt-2">
+<button class="w-full bg-[var(--carryover-green)] hover:brightness-95 text-white py-5 rounded-2xl font-extrabold text-lg uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition-all active:scale-[0.98] flex items-center justify-center gap-3">
+<span>Add to Next Session</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-slate-400 dark:text-slate-500 text-[10px] mt-4 font-bold uppercase tracking-[0.2em]">
+                Items not selected will be marked as 'Waste'
+            </p>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Food Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#F28C64",
+                        secondary: "#34283E",
+                        "background-light": "#FDFDFD",
+                        "background-dark": "#1F1D2B",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#252836",
+                        "subtle-light": "#F5F5F7",
+                        "subtle-dark": "#2D303E",
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': '1.25rem',
+                        '2xl': '1.5rem',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>.hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<script>
+function toggleSidebar(open) {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    if (open) {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+        setTimeout(() => overlay.classList.replace('opacity-0', 'opacity-100'), 10);
+    } else {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.replace('opacity-100', 'opacity-0');
+        setTimeout(() => overlay.classList.add('hidden'), 300);
+    }
+}
+</script></head>
+<body class="bg-gray-100 dark:bg-gray-900 font-sans min-h-screen flex justify-center items-center p-4 sm:p-8">
+<div class="relative w-full max-w-[390px] h-[844px] bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden sm:rounded-[3rem] flex flex-col"><div class="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 opacity-100" id="sidebar-overlay" onclick="toggleSidebar(false)"></div><div class="absolute inset-y-0 left-0 w-72 bg-white dark:bg-background-dark z-50 shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col p-6" id="sidebar">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-xl font-serif font-bold text-secondary dark:text-white">Today's Menu - Morning</h2>
+<button class="text-secondary dark:text-white" onclick="toggleSidebar(false)">
+<span class="material-icons-round">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-1">
+<div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 px-2">Food Items</div>
+<a class="text-sm font-medium text-secondary dark:text-white hover:bg-subtle-light dark:hover:bg-subtle-dark px-3 py-3 rounded-xl transition-colors" href="#">Classic Beef Burger</a>
+<a class="text-sm font-medium text-secondary dark:text-white hover:bg-subtle-light dark:hover:bg-subtle-dark px-3 py-3 rounded-xl transition-colors" href="#">Spicy BBQ Ribs</a>
+<a class="text-sm font-medium text-secondary dark:text-white hover:bg-subtle-light dark:hover:bg-subtle-dark px-3 py-3 rounded-xl transition-colors" href="#">Fresh Greek Salad</a>
+<a class="text-sm font-medium text-secondary dark:text-white hover:bg-subtle-light dark:hover:bg-subtle-dark px-3 py-3 rounded-xl transition-colors" href="#">Avocado Toast</a>
+</nav>
+</div>
+<div class="h-10 w-full bg-transparent flex justify-between items-center px-6 pt-2 z-20">
+<span class="text-xs font-semibold text-secondary dark:text-white" style="">9:41</span>
+<div class="flex space-x-1.5">
+<div class="w-4 h-4 rounded-full bg-secondary dark:bg-white opacity-20"></div>
+<div class="w-4 h-4 rounded-full bg-secondary dark:bg-white opacity-20"></div>
+<div class="w-6 h-4 rounded bg-secondary dark:bg-white opacity-20"></div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto hide-scrollbar pb-24 px-6 pt-2">
+<header class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-white dark:border-gray-700 shadow-sm">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATzNV2LqH0Ya25PNXJ64iCb3J1Lq1fYCSpXlK7H3KVFYch7-0OF_xQ5tEWapF-iIxaR_GDFxM-uXdbsAPb5QRTCMx5whL0KnNqjC6Vn6PKeZ3O8mqGiziEcaZzOVwYrRRxfLbVpm_mNaI_kRUBVPhSso8MrVU4KBLq3o4I-LseJqNAgB2EMCRf_5BpOUD-2cYD8Ak-AXYWFJk2W7wuI15jYGkY3HiIQOisJN1nCwwJB0_TBiO779-YGvlRKIdy03zw90AyYG7Fxzs" style=""/>
+</div>
+<div>
+<p class="text-xs text-gray-500 dark:text-gray-400 font-medium" style="">Good Morning</p>
+<h1 class="text-xl font-serif font-bold text-secondary dark:text-white" style="">Rahul</h1>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full bg-subtle-light dark:bg-subtle-dark flex items-center justify-center text-secondary dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition relative" style="">
+<span class="material-icons-round text-xl" style="">shopping_cart</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-subtle-light dark:bg-subtle-dark flex items-center justify-center text-secondary dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition relative" style="">
+<span class="material-icons-round text-xl" style="">notifications_none</span>
+<span class="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-subtle-dark"></span>
+</button>
+</div>
+</header>
+<div class="flex gap-3 mb-6">
+<div class="flex-1 bg-subtle-light dark:bg-subtle-dark rounded-2xl flex items-center px-4 py-3 shadow-sm">
+<span class="material-icons-round text-gray-400 text-xl mr-2" style="">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-secondary dark:text-white placeholder-gray-400" placeholder="Search for snacks..." type="text"/>
+</div>
+<button class="bg-white dark:bg-subtle-dark border border-gray-100 dark:border-gray-800 rounded-2xl w-12 flex items-center justify-center text-secondary dark:text-white shadow-sm"><span class="material-icons-round text-xl">favorite_border</span></button>
+</div>
+<div class="mb-8">
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2"><button class="flex items-center justify-center min-w-[48px] h-[40px] rounded-xl bg-subtle-light dark:bg-subtle-dark text-secondary dark:text-white mr-2" onclick="document.getElementById('sidebar').classList.remove('-translate-x-full')">
+<span class="material-icons-round">menu</span>
+</button>
+<button class="px-4 h-[40px] rounded-full bg-primary text-white text-sm font-medium whitespace-nowrap">Burger</button>
+<button class="px-4 h-[40px] rounded-full bg-subtle-light dark:bg-subtle-dark text-gray-500 dark:text-gray-400 text-sm font-medium whitespace-nowrap ml-2">Pizza</button>
+<button class="px-4 h-[40px] rounded-full bg-subtle-light dark:bg-subtle-dark text-gray-500 dark:text-gray-400 text-sm font-medium whitespace-nowrap ml-2">Noodles</button>
+<button class="px-4 h-[40px] rounded-full bg-subtle-light dark:bg-subtle-dark text-gray-500 dark:text-gray-400 text-sm font-medium whitespace-nowrap ml-2">Snacks</button>
+<button class="px-4 h-[40px] rounded-full bg-subtle-light dark:bg-subtle-dark text-gray-500 dark:text-gray-400 text-sm font-medium whitespace-nowrap ml-2">Drinks</button></div>
+</div>
+<div class="mb-8">
+<h2 class="text-lg font-bold font-serif text-secondary dark:text-white mb-4" style="">Today's Menu - Morning</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-card-light dark:bg-card-dark rounded-2xl p-3 shadow-soft dark:shadow-none border border-transparent dark:border-gray-800 flex flex-col relative group">
+<div class="w-full aspect-square rounded-xl overflow-hidden mb-3 bg-gray-50 dark:bg-gray-800 relative">
+<img alt="Beef Burger" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXMs89mRLDLamUG1NivLYBke0MigQsS9jaR-iUVmbFtdiICqgKvPozNHMeDfiATB1MLDBQVfO3x7innYHDkVWXv7ocxT2HS9qgQgk6gAzx7l904U7y4R7t_CoMmbax98IqquSLCKHbtWnEpGGwfZG46mqQoR2tLWwD49vN8EsFf6ZuMwg0jS08JywEGEW-9xqIb-zrMj7HA9_Fy8btAtt2LiddMFZUp2qQiZ39hhuTdtxuzaPNokQdvpamAYoFhlQcwym7gQeIbjY" style=""/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2 flex flex-col items-start gap-0.5">
+<span class="bg-blue-100 text-blue-700 text-[9px] font-bold px-1.5 py-0.5 rounded-md backdrop-blur-sm border border-blue-200" style="">Lunch Break</span>
+<div class="flex items-center gap-1">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-sm border border-green-200" style="">Available</span>
+<span class="text-[9px] text-white font-medium drop-shadow-sm" style="">45 left</span>
+</div>
+</div>
+<button class="absolute top-2 right-2 w-7 h-7 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-red-500 shadow-sm"><span class="material-icons-round text-sm">favorite_border</span></button></div>
+<div class="flex-1 flex flex-col">
+<h3 class="font-bold text-secondary dark:text-white text-sm mb-1 leading-tight" style="">Classic Beef Burger</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-primary font-bold text-base" style="">$8.50</span>
+<button class="w-7 h-7 rounded-full bg-secondary dark:bg-white text-white dark:text-secondary flex items-center justify-center hover:scale-105 transition" style="">
+<span class="material-icons-round text-sm" style="">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-2xl p-3 shadow-soft dark:shadow-none border border-transparent dark:border-gray-800 flex flex-col relative group">
+<div class="w-full aspect-square rounded-xl overflow-hidden mb-3 bg-gray-50 dark:bg-gray-800 relative">
+<img alt="Chicken BBQ" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8Wh00KKWvmPEICvisCjn4RypIMYd_VnEaSaZ2fl908LZb-bHlkd7ZNvH89Lhjr2uanPBCUANQl_Vk4bEsBDqRQ5syUKDNVYfNTY4DgngP3eAncqVWCPiNDJGi4_VnppMEzDBTVf_zsh6uff8aewohMSndT2UUaZZ5s789tTAyyzQS_VLPtKXrvg2JuxIrjbrf_uQKt-29f_Ey5ThS0Y6g9J68-BN_FpFZ3jypHXLCbgJht5jpWfKF0qWYBmgEk1Jszcx7-ik7mFw" style=""/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2 flex flex-col items-start gap-0.5">
+<span class="bg-indigo-100 text-indigo-700 text-[9px] font-bold px-1.5 py-0.5 rounded-md backdrop-blur-sm border border-indigo-200" style="">Dinner</span>
+<div class="flex items-center gap-1">
+<span class="bg-orange-100 text-orange-600 text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-sm border border-orange-200" style="">Low Stock</span>
+<span class="text-[9px] text-white font-medium drop-shadow-sm" style="">3 left</span>
+</div>
+</div>
+<button class="absolute top-2 right-2 w-7 h-7 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-red-500 shadow-sm"><span class="material-icons-round text-sm">favorite_border</span></button></div>
+<div class="flex-1 flex flex-col">
+<h3 class="font-bold text-secondary dark:text-white text-sm mb-1 leading-tight" style="">Spicy BBQ Ribs</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-primary font-bold text-base" style="">$12.00</span>
+<button class="w-7 h-7 rounded-full bg-secondary dark:bg-white text-white dark:text-secondary flex items-center justify-center hover:scale-105 transition" style="">
+<span class="material-icons-round text-sm" style="">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-2xl p-3 shadow-soft dark:shadow-none border border-transparent dark:border-gray-800 flex flex-col relative group">
+<div class="w-full aspect-square rounded-xl overflow-hidden mb-3 bg-gray-50 dark:bg-gray-800 relative">
+<img alt="Fresh Salad" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSt_YsMZUZC7SlWFT96E_OjVnaeEhyKnYbkaUQqWrq4gE3eyNtZ81F64Prwfhap-bvb3z4seVQmjpnBL75VHEUHrFiC29RbKpeLR3ibOiG6cJKbMNSj06JYB4-CWA7MGUWmoZShAIde1zPGLHOSgvARGGgp0hTNjxqlRoYUU5jhEMM6Bk1XESESVxUX-Ux5X0z31nl74ZYGrYxTq_glD_qGbbiBh6hKZ4OTnM87ymq1jyxtEIuj_bSu1EAaHi8LpR9yiqVackvePo" style=""/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2 flex flex-col items-start gap-0.5">
+<span class="bg-purple-100 text-purple-700 text-[9px] font-bold px-1.5 py-0.5 rounded-md backdrop-blur-sm border border-purple-200" style="">Morning Break</span>
+<div class="flex items-center gap-1">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-sm border border-green-200" style="">Available</span>
+<span class="text-[9px] text-white font-medium drop-shadow-sm" style="">22 left</span>
+</div>
+</div>
+<button class="absolute top-2 right-2 w-7 h-7 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-red-500 shadow-sm"><span class="material-icons-round text-sm">favorite_border</span></button></div>
+<div class="flex-1 flex flex-col">
+<h3 class="font-bold text-secondary dark:text-white text-sm mb-1 leading-tight" style="">Fresh Greek Salad</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-primary font-bold text-base" style="">$6.50</span>
+<div class="flex items-center bg-gray-100 dark:bg-gray-700 rounded-full px-1 py-0.5">
+<button class="w-5 h-5 rounded-full bg-white dark:bg-gray-600 shadow-sm flex items-center justify-center text-secondary dark:text-white text-xs" style="">-</button>
+<span class="text-xs font-bold mx-2 text-secondary dark:text-white" style="">1</span>
+<button class="w-5 h-5 rounded-full bg-secondary dark:bg-white text-white dark:text-secondary shadow-sm flex items-center justify-center text-xs" style="">+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-2xl p-3 shadow-soft dark:shadow-none border border-transparent dark:border-gray-800 flex flex-col relative group">
+<div class="w-full aspect-square rounded-xl overflow-hidden mb-3 bg-gray-50 dark:bg-gray-800 relative">
+<img alt="Avocado Toast" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJzHeN3rkcr6DWaYeCFqmgMAQGcDtzIAZh2L9vs520mQ-W-6XXSk56d016rIYRs1c1zpYIh02--jbaYBnpKgtXdPRfZeaQJjnF9HPI9iuT6S63-bvi-_qpDGj6zCA5kr8cV98t_mOxj3vkMAqfoyKuGkCoeCIl7sTfa2QUtXLQharQwFhYov2q_6B40WtTWXILkhqFGlk_xzJ-LFZOGMqPzSRCDeq1Rrj2gSdELDyWafqJROJz13qssnKYYccxd1JI1ekDsA0rXWY" style=""/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2 flex flex-col items-start gap-0.5">
+<span class="bg-yellow-100 text-yellow-800 text-[9px] font-bold px-1.5 py-0.5 rounded-md backdrop-blur-sm border border-yellow-200" style="">Breakfast</span>
+<div class="flex items-center gap-1">
+<span class="bg-red-100 text-red-600 text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-sm border border-red-200" style="">Out of Stock</span>
+<span class="text-[9px] text-white font-medium drop-shadow-sm" style="">0 left</span>
+</div>
+</div>
+<button class="absolute top-2 right-2 w-7 h-7 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-red-500 shadow-sm"><span class="material-icons-round text-sm">favorite_border</span></button></div>
+<div class="flex-1 flex flex-col">
+<h3 class="font-bold text-secondary dark:text-white text-sm mb-1 leading-tight" style="">Avocado Toast</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-primary font-bold text-base" style="">$5.00</span>
+<button class="w-7 h-7 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500 flex items-center justify-center cursor-not-allowed" style="">
+<span class="material-icons-round text-sm" style="">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div><div class="mb-8"><h2 class="text-lg font-bold font-serif text-secondary dark:text-white mb-4">Today's Menu - Break 1</h2><div class="grid grid-cols-2 gap-4"><div class="bg-card-light dark:bg-card-dark rounded-2xl p-3 shadow-soft border border-transparent dark:border-gray-800 flex flex-col"><div class="w-full aspect-square rounded-xl overflow-hidden mb-3 relative bg-gray-50 dark:bg-gray-800">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKghPhcIc335s7xTsMScqO0dnYDlqVuQJ7yZz8zfl78s5OoprFcWXshfv8yUBcZfsbtBOa80wmstVC7NXGcVUmqNJTEM7teIOWOxq49HlqGnnL81eREPrO5PoAeAdjlC1AR0Nc_enTSii4ReM_qTsnAW4JBxOrJlEV0-c8ui5K80l8RfNbvIaaRNbGxs0NAjPo89oj4X7HETdQEILahPGDH2wANz0HB6wlRfy16LurtRNuspKt_UyAlXU_EMwHHFtmgl07wxW7GPc"/>
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2 flex flex-col items-start gap-0.5">
+<span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-sm border border-green-200">Available</span>
+<span class="text-[9px] text-white font-medium drop-shadow-sm">8 left</span>
+</div>
+<button class="absolute top-2 right-2 w-7 h-7 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-red-500"><span class="material-icons-round text-sm">favorite_border</span></button>
+</div>
+<h3 class="font-bold text-sm mb-1 text-secondary dark:text-white">Fruit Bowl</h3>
+<div class="flex justify-between items-center mt-auto">
+<span class="text-primary font-bold text-base">$4.50</span>
+<button class="w-7 h-7 rounded-full bg-secondary dark:bg-white text-white dark:text-secondary flex items-center justify-center hover:scale-105 transition">
+<span class="material-icons-round text-sm">add</span>
+</button>
+</div></div></div></div>
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-lg font-bold font-serif text-secondary dark:text-white" style="">Popular today 🔥</h2>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2"><button class="flex items-center justify-center min-w-[48px] h-[40px] rounded-xl bg-subtle-light dark:bg-subtle-dark text-secondary dark:text-white mr-2" onclick="document.getElementById('sidebar').classList.remove('-translate-x-full')">
+<span class="material-icons-round">menu</span>
+</button>
+<button class="px-4 h-[40px] rounded-full bg-primary text-white text-sm font-medium whitespace-nowrap">Burger</button>
+<button class="px-4 h-[40px] rounded-full bg-subtle-light dark:bg-subtle-dark text-gray-500 dark:text-gray-400 text-sm font-medium whitespace-nowrap ml-2">Pizza</button>
+<button class="px-4 h-[40px] rounded-full bg-subtle-light dark:bg-subtle-dark text-gray-500 dark:text-gray-400 text-sm font-medium whitespace-nowrap ml-2">Noodles</button>
+<button class="px-4 h-[40px] rounded-full bg-subtle-light dark:bg-subtle-dark text-gray-500 dark:text-gray-400 text-sm font-medium whitespace-nowrap ml-2">Snacks</button>
+<button class="px-4 h-[40px] rounded-full bg-subtle-light dark:bg-subtle-dark text-gray-500 dark:text-gray-400 text-sm font-medium whitespace-nowrap ml-2">Drinks</button></div>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 bg-card-light dark:bg-card-dark rounded-t-3xl shadow-[0_-5px_20px_-5px_rgba(0,0,0,0.1)] px-8 pb-8 pt-4 z-30">
+<div class="flex justify-around items-center">
+<button class="flex flex-col items-center gap-1 text-primary w-14" style="">
+<span class="material-icons-round text-2xl" style="">dashboard</span>
+<span class="text-[10px] font-medium" style="">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition w-14" style="">
+<span class="material-icons-round text-2xl" style="">receipt_long</span>
+<span class="text-[10px] font-medium" style="">Orders</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition w-14" style="">
+<span class="material-symbols-outlined text-2xl" style="">confirmation_number</span>
+<span class="text-[10px] font-medium" style="">Token</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary transition w-14" style="">
+<span class="material-icons-round text-2xl" style="">person_outline</span>
+<span class="text-[10px] font-medium" style="">Profile</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

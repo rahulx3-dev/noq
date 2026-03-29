@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Order History List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#EF835D", 
+                        secondary: "#2D264B", 
+                        "background-light": "#F9FAFB", 
+                        "background-dark": "#1F1B33", 
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#2D264B",
+                        "text-main-light": "#1F2937",
+                        "text-main-dark": "#F3F4F6",
+                        "text-muted-light": "#6B7280",
+                        "text-muted-dark": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        "xl": "1.25rem",
+                        "2xl": "1.5rem",
+                        "3xl": "2rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 15px rgba(239, 131, 93, 0.3)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark font-sans antialiased min-h-screen transition-colors duration-300">
+<div class="max-w-md mx-auto min-h-screen relative pb-28 overflow-hidden shadow-2xl bg-background-light dark:bg-background-dark">
+<header class="pt-12 px-6 pb-4 flex items-center justify-between sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<div class="flex flex-col">
+<span class="text-text-muted-light dark:text-text-muted-dark text-sm font-medium">Hello, Student!</span>
+<h1 class="text-2xl font-display font-bold text-secondary dark:text-white">Past Orders</h1>
+</div>
+<button class="p-2 rounded-full bg-white dark:bg-card-dark shadow-sm border border-gray-100 dark:border-gray-700">
+<span class="material-symbols-outlined text-secondary dark:text-white">notifications_none</span>
+</button>
+</header>
+<div class="px-6 mb-6">
+<div class="bg-gray-100 dark:bg-card-dark p-1 rounded-xl flex items-center relative">
+<div class="w-1/2 h-full absolute right-1 top-1 bottom-1 bg-white dark:bg-secondary rounded-lg shadow-sm transition-all duration-300"></div>
+<button class="flex-1 relative z-10 py-2.5 text-sm font-medium text-text-muted-light dark:text-text-muted-dark text-center hover:text-text-main-light dark:hover:text-white transition-colors">
+                    Active Orders
+                </button>
+<button class="flex-1 relative z-10 py-2.5 text-sm font-semibold text-primary text-center">
+                    Order History
+                </button>
+</div>
+</div>
+<main class="px-6 space-y-5">
+<div class="bg-card-light dark:bg-card-dark rounded-2xl p-5 shadow-soft border border-gray-100 dark:border-gray-800 relative overflow-hidden group hover:shadow-lg transition-all duration-300 opacity-80">
+<div class="absolute top-0 right-0 p-3">
+<span class="bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 text-xs font-bold px-3 py-1.5 rounded-full border border-gray-200 dark:border-gray-600">
+                        Completed
+                    </span>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="w-16 h-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex-shrink-0 overflow-hidden mt-1 grayscale">
+<img alt="Pancakes" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrDvzA3kLL-HUPdUJbP6UJX5R3JsVAzuG_CgAtaTjjdwUurBHmcKD6E7itr6aCgXQh43Fw4CAzeh4FsOtOHEAO0DEWrml7SxYbjNSCn2lk4Fo880yNonjj-brwYQy3D6bujDC-lT5cIon1_BLC-TPBNccwhbLAM1eoOHIWg9f-Q7OW7kaN7tdYXaZG3ejCUAzrmB-1P3ngCfxzh89vac4ov2JALHPHkqoVP9bFqWd4DmsndPntoQpunzY2G5siW03lXc62ERbXPXo"/>
+</div>
+<div class="flex flex-col justify-center w-full">
+<div class="flex flex-col gap-2 mt-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-display font-bold text-base text-secondary dark:text-white leading-tight">Veggie Wrap</h3>
+<span class="text-[10px] text-text-muted-light dark:text-text-muted-dark bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">Lunch Break</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-display font-bold text-base text-secondary dark:text-white leading-tight">Mango Lassi</h3>
+<span class="text-[10px] text-text-muted-light dark:text-text-muted-dark bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">Lunch Break</span>
+</div>
+</div>
+</div>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark mt-2 pt-2 border-t border-dashed border-gray-200 dark:border-gray-700">Cafeteria Block A</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Date</span>
+<span class="text-sm font-bold text-secondary dark:text-white">Oct 24</span>
+</div>
+<div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Pick up</span>
+<span class="text-sm font-bold text-secondary dark:text-white">1:00 PM</span>
+</div>
+<div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Order ID</span>
+<span class="text-sm font-bold text-secondary dark:text-white">#8102</span>
+</div>
+</div>
+<div class="text-primary font-bold text-lg">
+                        ₹220
+                    </div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-2xl p-5 shadow-soft border border-gray-100 dark:border-gray-800 relative overflow-hidden group hover:shadow-lg transition-all duration-300 opacity-80">
+<div class="absolute top-0 right-0 p-3">
+<span class="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-300 text-xs font-bold px-3 py-1.5 rounded-full border border-blue-100 dark:border-blue-800">
+                        Served
+                    </span>
+</div>
+<div class="flex gap-4 mb-4 pl-2">
+<div class="w-16 h-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex-shrink-0 overflow-hidden grayscale">
+<img alt="Sandwich" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrXXfFhv5FnUYiW3fEE_hTAkd_GVOX5iZFTRD9n9gsMqwElDtKnzQ3uzmfKF74UC9dCuULTf_quB3E1jXXNJnipOhya0LlK_DFSWkOMhMIp6oKwsA-oRu6b68keOZ4hc86T_86kKkjrF5LGWMAnpkBXzvcQZz20Oa3YbG_IN5Jec_QwuCfyJ5NQIs-Bcr7ssficxhzDYalGLHNmU8SMrePYpt16nHtgKpu8m65VqNJEe0kd7874iFC_55qh2OBAqLjpOVXcu1oPAU"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="font-display font-bold text-lg text-secondary dark:text-white">Chicken Sandwich</h3>
+<div class="mt-1">
+<span class="text-[10px] text-text-muted-light dark:text-text-muted-dark bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">Evening Snack</span>
+</div>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1.5">Main Dining Hall</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700 pl-2">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Date</span>
+<span class="text-sm font-bold text-secondary dark:text-white">Oct 23</span>
+</div>
+<div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Pick up</span>
+<span class="text-sm font-bold text-secondary dark:text-white">5:30 PM</span>
+</div>
+<div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Order ID</span>
+<span class="text-sm font-bold text-secondary dark:text-white">#7991</span>
+</div>
+</div>
+<div class="text-primary font-bold text-lg">
+                        ₹150
+                    </div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-2xl p-5 shadow-soft border border-gray-100 dark:border-gray-800 relative overflow-hidden group hover:shadow-lg transition-all duration-300 opacity-80">
+<div class="absolute top-0 right-0 p-3">
+<span class="bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 text-xs font-bold px-3 py-1.5 rounded-full border border-gray-200 dark:border-gray-600">
+                        Completed
+                    </span>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="w-16 h-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex-shrink-0 overflow-hidden mt-1 grayscale">
+<img alt="Pasta" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdt8gz9InpI-THbAmFwEAFY4pFpKHWjgMkD9QxpAW6xg2yt1dw_HvNkCwdhRTWHLvNygBaKBkhYGK18sRUIQlja7mOsYqEmjQ3hKHTcIA-xmxh0iYBPyXdyD_-TH6lnXQQj6EosWa6GNakpCF2695lwQ9dvN6Nn8ipT-ETBPRDIFkKzi5M5HPH5s8lnr95rSZRP3wAQPaPsrd9u_eTTZtGd1-ypUNn2QC1cvn35g7kQES7qqD6U2ekKmyY5BA2KxBerUTwEzsHK38"/>
+</div>
+<div class="flex flex-col justify-center w-full">
+<div class="flex flex-col gap-2 mt-1">
+<div>
+<h3 class="font-display font-bold text-base text-secondary dark:text-white leading-tight">Red Sauce Pasta</h3>
+<span class="text-[10px] text-text-muted-light dark:text-text-muted-dark bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">Dinner</span>
+</div>
+<div>
+<h3 class="font-display font-bold text-base text-secondary dark:text-white leading-tight">Garlic Bread (2pcs)</h3>
+<span class="text-[10px] text-text-muted-light dark:text-text-muted-dark bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">Dinner</span>
+</div>
+</div>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark mt-2 pt-2 border-t border-dashed border-gray-200 dark:border-gray-700">Pizza Corner</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Date</span>
+<span class="text-sm font-bold text-secondary dark:text-white">Oct 22</span>
+</div>
+<div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Pick up</span>
+<span class="text-sm font-bold text-secondary dark:text-white">8:15 PM</span>
+</div>
+<div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Order ID</span>
+<span class="text-sm font-bold text-secondary dark:text-white">#7554</span>
+</div>
+</div>
+<div class="text-primary font-bold text-lg">
+                        ₹310
+                    </div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-2xl p-5 shadow-soft border border-gray-100 dark:border-gray-800 relative overflow-hidden group hover:shadow-lg transition-all duration-300 opacity-70">
+<div class="absolute top-0 right-0 p-3">
+<span class="bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 text-xs font-bold px-3 py-1.5 rounded-full border border-gray-200 dark:border-gray-600">
+                        Completed
+                    </span>
+</div>
+<div class="flex gap-4 mb-4 pl-2">
+<div class="w-16 h-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex-shrink-0 overflow-hidden grayscale">
+<div class="w-full h-full bg-gray-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-400">restaurant</span>
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="font-display font-bold text-lg text-secondary dark:text-white">Chole Bhature</h3>
+<div class="mt-1">
+<span class="text-[10px] text-text-muted-light dark:text-text-muted-dark bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">Lunch</span>
+</div>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1.5">North Indian Stall</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700 pl-2">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Date</span>
+<span class="text-sm font-bold text-secondary dark:text-white">Oct 20</span>
+</div>
+<div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Pick up</span>
+<span class="text-sm font-bold text-secondary dark:text-white">1:15 PM</span>
+</div>
+<div class="w-px h-6 bg-gray-200 dark:bg-gray-700"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark font-semibold">Order ID</span>
+<span class="text-sm font-bold text-secondary dark:text-white">#6821</span>
+</div>
+</div>
+<div class="text-primary font-bold text-lg">
+                        ₹120
+                    </div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-6 left-6 right-6 z-50">
+<div class="bg-card-light dark:bg-card-dark rounded-full shadow-2xl p-2 px-6 flex justify-between items-center border border-gray-100 dark:border-gray-800 h-16 relative">
+<button class="flex flex-col items-center gap-1 p-2 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">home</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-primary dark:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl fill-1">list_alt</span>
+</button>
+<div class="absolute left-1/2 -translate-x-1/2 -top-6">
+<button class="bg-primary hover:bg-orange-600 text-white w-14 h-14 rounded-full shadow-glow transform hover:scale-105 transition-all duration-300 flex items-center justify-center border-4 border-background-light dark:border-background-dark">
+<span class="material-symbols-outlined text-2xl">confirmation_number</span>
+</button>
+</div>
+<div class="w-12"></div> 
+<button class="flex flex-col items-center gap-1 p-2 text-text-muted-light dark:text-text-muted-dark hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">person</span>
+</button>
+</div>
+</nav>
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-20 left-0 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl -z-10 -translate-x-1/2"></div>
+</div>
+<script>
+        // Check local storage or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+</body></html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Menu Item: Masala Dosa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#111111",
+                        secondary: "#F3F4F6",
+                        "background-light": "#FAFAFA",
+                        "background-dark": "#121212",
+                        "surface-dark": "#1E1E1E",
+                        "text-light": "#111111",
+                        "text-dark": "#FFFFFF",
+                        "gray-text": "#6B7280",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': '0.75rem',
+                        '2xl': '1rem',
+                        '3xl': '1.5rem',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 2px 8px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        body {
+            @apply bg-gray-50 dark:bg-background-dark;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-input {
+            @apply w-full px-4 py-3 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-800 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm;
+        }
+        .ios-label {
+            @apply block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 ml-1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-text-light dark:text-text-dark font-sans min-h-screen flex flex-col">
+<header class="sticky top-0 z-30 bg-white/80 dark:bg-surface-dark/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-icons-round">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight">Edit Item: Masala Dosa</h1>
+</div>
+<button class="p-2 text-primary dark:text-white">
+<span class="material-icons-round">more_vert</span>
+</button>
+</header>
+<main class="flex-1 p-4 pb-32 space-y-6 max-w-md mx-auto w-full">
+<section class="space-y-3">
+<span class="ios-label">Item Image</span>
+<div class="relative group">
+<div class="aspect-video w-full rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 border-2 border-dashed border-gray-200 dark:border-gray-700 flex items-center justify-center">
+<img alt="Masala Dosa" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOFuMYTDPwEn9IHSjawXRppIyO0Zkj_ePO2elU-HZ64sAjjeR17rHg4j5bfFwJk4Ya-tyrLQOPwRwikc20KH016QV8J1YF6AFUlQ7gaI1okLKCQom7oxAvl9JpzaTx515wxlrsxZC4mT4_a8FscmYP-is65AilsYYhk2WijQefSEShGQdXl05oxCBETmW_xgkZSwdEEGuqVQtWJE7T3FMxz1gBzGmUH0_-9S5WeNcUt15KrWhQTo5kXU9MJ58AVeSIdMQv6qUEiQo"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-100 transition-opacity">
+<button class="bg-white/90 dark:bg-primary/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+<span class="material-icons-round text-base">photo_camera</span>
+                            Change
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<div class="space-y-5">
+<div>
+<label class="ios-label" for="item-name">Item Name</label>
+<input class="ios-input" id="item-name" placeholder="e.g. Masala Dosa" type="text" value="Masala Dosa"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="ios-label" for="price">Price (₹)</label>
+<input class="ios-input" id="price" placeholder="0.00" type="number" value="120"/>
+</div>
+<div>
+<label class="ios-label" for="category">Category</label>
+<select class="ios-input appearance-none" id="category">
+<option>Breakfast</option>
+<option selected="">South Indian</option>
+<option>Lunch</option>
+<option>Snacks</option>
+</select>
+</div>
+</div>
+<div>
+<label class="ios-label" for="session">Serving Session</label>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center gap-3 p-3 rounded-xl border border-primary bg-primary/5 dark:border-white/20 dark:bg-white/5 cursor-pointer">
+<input checked="" class="rounded border-gray-300 text-primary focus:ring-primary h-5 w-5" type="checkbox"/>
+<span class="text-sm font-medium">Morning</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-gray-800 cursor-pointer">
+<input class="rounded border-gray-300 text-primary focus:ring-primary h-5 w-5" type="checkbox"/>
+<span class="text-sm font-medium">Evening</span>
+</label>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-800 rounded-2xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 flex items-center justify-center">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<p class="font-semibold text-sm">Stock Management</p>
+<p class="text-xs text-gray-500">Currently: 45 units left</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div>
+<label class="ios-label" for="stock-count">Update Stock Level</label>
+<div class="flex items-center gap-4">
+<button class="w-12 h-12 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800 text-xl font-bold">-</button>
+<input class="ios-input text-center text-lg font-bold" id="stock-count" type="number" value="45"/>
+<button class="w-12 h-12 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800 text-xl font-bold">+</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-surface-dark/90 backdrop-blur-lg border-t border-gray-100 dark:border-gray-800 p-4 pb-8 safe-area-bottom">
+<div class="max-w-md mx-auto space-y-3">
+<button class="w-full bg-primary dark:bg-white text-white dark:text-primary py-4 rounded-2xl font-bold text-base shadow-lg shadow-primary/10 transition-transform active:scale-[0.98]">
+                Update Item
+            </button>
+<button class="w-full bg-transparent text-gray-500 dark:text-gray-400 py-2 rounded-xl font-medium text-sm transition-colors active:text-red-500">
+                Discard Changes
+            </button>
+</div>
+</footer>
+
+</body></html>

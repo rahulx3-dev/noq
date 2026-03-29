@@ -1,0 +1,32 @@
+﻿Showing sdk gpc x86 64 logs:
+D/FlutterJNI( 8627): Beginning load of flutter...
+D/FlutterJNI( 8627): flutter (null) was loaded normally!
+I/flutter ( 8627): [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(104)] Using the Impeller rendering backend (OpenGLES).
+I/flutter ( 8627): The Dart VM service is listening on http://127.0.0.1:37639/zK_dZeGC3Ss=/
+I/flutter ( 8627): DEBUG: Calling WidgetsFlutterBinding.ensureInitialized()
+I/flutter ( 8627): DEBUG: Initializing Firebase...
+I/flutter ( 8627): DEBUG: Firebase initialization FAILED: [core/duplicate-app] A Firebase App named "[DEFAULT]" already exists
+I/flutter ( 8627): DEBUG: Calling runApp(QCutApp)
+I/flutter ( 8627): ROUTER REDIRECT: location=/splash, isLoggedIn=false, profileLoading=true
+I/flutter ( 8627): ROUTER REDIRECT: location=/splash, isLoggedIn=true, profileLoading=true
+I/flutter ( 8627): ROUTER REDIRECT: location=/splash, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/dashboard, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/release, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/orders, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/release, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/orders, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/release, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/reports, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/profile, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/reports, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/orders, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/release, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/dashboard, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/release, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/orders, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/dashboard, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/release, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/orders, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/reports, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/profile, isLoggedIn=true, profileLoading=false
+I/flutter ( 8627): ROUTER REDIRECT: location=/admin/dashboard, isLoggedIn=true, profileLoading=false

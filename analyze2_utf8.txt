@@ -1,0 +1,54 @@
+﻿Analyzing qcutapp...                                            
+
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\app\themes\auth_theme.dart:66:9 - deprecated_member_use
+   info - Unnecessary use of multiple underscores - lib\features\admin\screens\admin_dashboard_screen.dart:1443:22 - unnecessary_underscores
+   info - Statements in an if should be enclosed in a block - lib\features\admin\screens\admin_orders_screen.dart:1100:32 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\features\admin\screens\admin_orders_screen.dart:1101:35 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\features\admin\screens\admin_orders_screen.dart:1102:37 - curly_braces_in_flow_control_structures
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\screens\admin_release_screen.dart:693:58 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\features\admin\screens\admin_staff_management_screen.dart:961:31 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\features\admin\screens\admin_staff_management_screen.dart:1045:40 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\features\admin\screens\admin_staff_management_screen.dart:1049:40 - use_build_context_synchronously
+   info - Don't invoke 'print' in production code - lib\features\admin\services\admin_notification_service.dart:29:7 - avoid_print
+   info - Statements in an if should be enclosed in a block - lib\features\admin\widgets\order_traffic_chart.dart:27:22 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\features\admin\widgets\order_traffic_chart.dart:28:10 - curly_braces_in_flow_control_structures
+   info - 'swapAnimationDuration' is deprecated and shouldn't be used. Please use [duration] instead - lib\features\admin\widgets\order_traffic_chart.dart:148:15 - deprecated_member_use
+   info - 'swapAnimationCurve' is deprecated and shouldn't be used. Please use [curve] instead - lib\features\admin\widgets\order_traffic_chart.dart:149:15 - deprecated_member_use
+   info - Statements in an if should be enclosed in a block - lib\features\admin\widgets\slot_analysis_chart.dart:218:47 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\features\admin\widgets\slot_analysis_chart.dart:219:33 - curly_braces_in_flow_control_structures
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\screens\login_screen.dart:114:43 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\screens\reset_link_sent_screen.dart:56:43 - deprecated_member_use
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:64:9 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:88:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:91:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:93:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:95:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:98:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:110:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:113:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:123:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:128:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:132:7 - avoid_print
+   info - Don't invoke 'print' in production code - lib\features\auth\screens\splash_screen.dart:133:7 - avoid_print
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\screens\splash_screen.dart:331:30 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\screens\verify_email_screen.dart:128:43 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check - lib\features\auth\screens\verify_email_screen.dart:202:19 - use_build_context_synchronously
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\screens\verify_success_screen.dart:25:37 - deprecated_member_use
+   info - Function literals shouldn't be passed to 'forEach' - lib\features\staff\screens\staff_kitchen_screen.dart:90:26 - avoid_function_literals_in_foreach_calls
+   info - Function literals shouldn't be passed to 'forEach' - lib\features\staff\screens\staff_kitchen_screen.dart:92:20 - avoid_function_literals_in_foreach_calls
+   info - Unnecessary use of multiple underscores - lib\features\staff\screens\staff_kitchen_screen.dart:367:18 - unnecessary_underscores
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\staff\screens\staff_profile_screen.dart:90:49 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\staff\screens\staff_profile_screen.dart:191:50 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\staff\staff_shell.dart:145:56 - deprecated_member_use
+   info - Don't use 'BuildContext's across async gaps - lib\features\staff\widgets\staff_token_card.dart:429:51 - use_build_context_synchronously
+   info - Don't use 'BuildContext's across async gaps - lib\features\staff\widgets\staff_token_card.dart:483:53 - use_build_context_synchronously
+   info - Unnecessary use of multiple underscores - lib\features\staff\widgets\staff_token_card.dart:690:51 - unnecessary_underscores
+   info - The parameter name 'sum' matches a visible type name - lib\features\staff\widgets\staff_token_card.dart:771:42 - avoid_types_as_parameter_names
+   info - The parameter name 'sum' matches a visible type name - lib\features\staff\widgets\staff_token_card.dart:884:35 - avoid_types_as_parameter_names
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\features\student\screens\student_checkout_screen.dart:372:13 - deprecated_member_use
+   info - 'groupValue' is deprecated and shouldn't be used. Use a RadioGroup ancestor to manage group value instead. This feature was deprecated after v3.32.0-0.0.pre - lib\features\student\screens\student_checkout_screen.dart:717:15 - deprecated_member_use
+   info - 'onChanged' is deprecated and shouldn't be used. Use RadioGroup to handle value change instead. This feature was deprecated after v3.32.0-0.0.pre - lib\features\student\screens\student_checkout_screen.dart:718:15 - deprecated_member_use
+   info - The import of 'dart:ui' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart' - lib\features\student\screens\student_dashboard_screen.dart:2:8 - unnecessary_import
+   info - 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre - lib\features\student\screens\student_profile_screen.dart:216:25 - deprecated_member_use
+   info - The import of 'dart:ui' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart' - lib\features\student\widgets\success_reveal.dart:1:8 - unnecessary_import
+

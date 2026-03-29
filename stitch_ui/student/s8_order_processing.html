@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Processing - Pickmee!</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,700&amp;family=Material+Icons+Round&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF8C66",
+              "primary-dark": "#E67350",
+              "background-light": "#F9F9F9",
+              "background-dark": "#1F1D2B",
+              "card-light": "#FFFFFF",
+              "card-dark": "#2D2B3B",
+              "text-main-light": "#2D2338",
+              "text-main-dark": "#EAEAEA",
+              "text-muted-light": "#9CA3AF",
+              "text-muted-dark": "#6B7280",
+              "accent-purple": "#2D2338",
+            },
+            fontFamily: {
+              display: ["Fraunces", "serif"],
+              sans: ["DM Sans", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              'xl': '1.5rem',
+              '2xl': '2rem',
+            },
+            boxShadow: {
+              'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+              'glow': '0 0 20px rgba(255, 140, 102, 0.3)',
+            },
+            animation: {
+              'bounce-slow': 'bounce 3s infinite',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          },
+        },
+      };
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-sans text-text-main-light dark:text-text-main-dark min-h-screen flex justify-center items-center p-4 antialiased transition-colors duration-200">
+<div class="w-full max-w-md bg-white dark:bg-card-dark h-[844px] overflow-hidden relative rounded-[2.5rem] shadow-2xl border-8 border-white dark:border-gray-800 flex flex-col items-center justify-center p-8 text-center">
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+<div class="absolute bottom-20 -left-20 w-72 h-72 bg-accent-purple/10 rounded-full blur-3xl"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center max-w-xs mx-auto">
+<div class="relative mb-12">
+<div class="w-48 h-48 rounded-full border-4 border-primary/20 flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full border-4 border-primary border-t-transparent border-l-transparent rotate-45"></div>
+<div class="w-32 h-32 bg-primary/10 rounded-full flex items-center justify-center relative overflow-hidden shadow-glow">
+<span class="material-symbols-outlined text-6xl text-primary transform -rotate-12">
+            skillet
+          </span>
+<div class="absolute top-6 right-8 w-2 h-2 bg-primary/40 rounded-full"></div>
+<div class="absolute top-4 right-10 w-3 h-3 bg-primary/60 rounded-full"></div>
+</div>
+</div>
+<div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-accent-purple text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-wider shadow-lg flex items-center gap-2">
+<span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+        CONFIRMING
+      </div>
+</div>
+<div class="space-y-4">
+<h1 class="font-display font-bold text-3xl text-text-main-light dark:text-text-main-dark leading-tight">
+        Processing<br/>your order...
+      </h1>
+<p class="text-text-muted-light dark:text-text-muted-dark text-base leading-relaxed px-4">
+        Please wait while we confirm your items with the kitchen. This usually takes about 30 seconds.
+      </p>
+</div>
+<div class="mt-12 w-full space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center">
+<span class="material-icons-round text-white text-sm">check</span>
+</div>
+<span class="text-sm font-medium text-text-main-light dark:text-text-main-dark opacity-50">Payment Verified</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/40">
+<div class="w-2 h-2 bg-white rounded-full"></div>
+</div>
+<span class="text-sm font-bold text-text-main-light dark:text-text-main-dark">Sending to Kitchen</span>
+</div>
+<div class="flex items-center gap-3 opacity-40">
+<div class="w-6 h-6 rounded-full border-2 border-gray-200 dark:border-gray-600"></div>
+<span class="text-sm font-medium">Generating Token</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-8 text-center w-full px-8">
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">
+       Don't close this screen
+     </p>
+</div>
+</div>
+
+</body></html>

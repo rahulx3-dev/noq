@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Food Categories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#111111",
+                        secondary: "#F3F4F6",
+                        "background-light": "#FAFAFA",
+                        "background-dark": "#121212",
+                        "surface-dark": "#1E1E1E",
+                        "text-light": "#111111",
+                        "text-dark": "#FFFFFF",
+                        "gray-text": "#6B7280",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': '0.75rem',
+                        '2xl': '1rem',
+                        '3xl': '1.5rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-gray-100 dark:bg-gray-900 flex h-screen font-sans overflow-hidden">
+<aside class="w-64 bg-white dark:bg-surface-dark border-r border-gray-200 dark:border-gray-800 flex flex-col h-full hidden md:flex">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-lg">N</div>
+<span class="font-bold text-xl tracking-tight text-text-light dark:text-text-dark">NOQ Admin</span>
+</div>
+<nav class="flex-1 px-4 space-y-1 overflow-y-auto no-scrollbar py-4">
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" href="#">
+<span class="material-icons-round text-xl">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">restaurant_menu</span>
+                Menu Items
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium bg-primary/5 text-primary dark:bg-white/10 dark:text-white rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">category</span>
+                Categories
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">receipt_long</span>
+                Orders
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" href="#">
+<span class="material-icons-round text-xl">insert_chart_outlined</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" href="#">
+<span class="material-icons-round text-xl">people</span>
+                Customers
+            </a>
+</nav>
+<div class="p-4 border-t border-gray-200 dark:border-gray-800">
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-500 dark:text-gray-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors" href="#">
+<span class="material-icons-round text-xl">settings</span>
+                Settings
+            </a>
+<div class="mt-4 flex items-center gap-3 px-3">
+<div class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
+<span class="material-icons-round text-sm text-gray-400 dark:text-gray-500">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-text-light dark:text-text-dark truncate">Sarah Jenkins</p>
+<p class="text-xs text-gray-500 truncate">Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-background-light dark:bg-background-dark overflow-hidden relative">
+<header class="h-16 px-8 flex items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-surface-dark shrink-0">
+<h1 class="text-xl font-bold text-text-light dark:text-text-dark">Manage Food Categories</h1>
+<div class="flex items-center gap-4">
+<button class="p-2 text-gray-400 hover:text-primary dark:hover:text-white transition-colors relative">
+<span class="material-icons-round">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white dark:border-surface-dark"></span>
+</button>
+<div class="h-8 w-px bg-gray-200 dark:bg-gray-700"></div>
+<button class="text-sm font-medium text-primary dark:text-white hover:underline">View Live Site</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-4xl mx-auto space-y-8">
+<section class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-soft border border-gray-100 dark:border-gray-800">
+<h2 class="text-lg font-semibold text-text-light dark:text-text-dark mb-4">Add New Category</h2>
+<div class="flex gap-4 items-center">
+<div class="relative flex-1">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">add_circle</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 border-gray-200 dark:border-gray-700 rounded-xl leading-5 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm transition-shadow" placeholder="e.g., Vegan Specials, Desserts..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-gray-900 text-white dark:bg-white dark:text-primary dark:hover:bg-gray-200 px-6 py-3 rounded-xl font-medium text-sm flex items-center gap-2 transition-colors shadow-lg shadow-primary/20 dark:shadow-none">
+<span class="material-icons-round text-sm">add</span>
+                            Add Category
+                        </button>
+</div>
+</section>
+<section class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<h2 class="text-lg font-semibold text-text-light dark:text-text-dark">Active Categories</h2>
+<span class="text-xs font-medium text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md">4 Total</span>
+</div>
+<div class="grid gap-3" id="categories-list">
+<div class="group bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-all flex items-center gap-4 cursor-grab active:cursor-grabbing">
+<div class="text-gray-300 dark:text-gray-600 cursor-grab active:cursor-grabbing p-1 hover:text-gray-500 dark:hover:text-gray-400">
+<span class="material-icons-round">drag_indicator</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 flex items-center justify-center">
+<span class="material-symbols-outlined">bakery_dining</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-semibold text-text-light dark:text-text-dark text-base">Breakfast</h3>
+<p class="text-xs text-gray-500 mt-0.5">8 items active</p>
+</div>
+<div class="flex items-center gap-3 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-gray-400 hover:text-primary dark:hover:text-white transition-colors rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+<span class="material-icons-round text-xl">edit</span>
+</button>
+</div>
+<div class="h-8 w-px bg-gray-100 dark:bg-gray-800 mx-2"></div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="group bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-all flex items-center gap-4 cursor-grab active:cursor-grabbing">
+<div class="text-gray-300 dark:text-gray-600 cursor-grab active:cursor-grabbing p-1 hover:text-gray-500 dark:hover:text-gray-400">
+<span class="material-icons-round">drag_indicator</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 flex items-center justify-center">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-semibold text-text-light dark:text-text-dark text-base">Hot Meals</h3>
+<p class="text-xs text-gray-500 mt-0.5">12 items active</p>
+</div>
+<div class="flex items-center gap-3 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-gray-400 hover:text-primary dark:hover:text-white transition-colors rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+<span class="material-icons-round text-xl">edit</span>
+</button>
+</div>
+<div class="h-8 w-px bg-gray-100 dark:bg-gray-800 mx-2"></div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="group bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-all flex items-center gap-4 cursor-grab active:cursor-grabbing">
+<div class="text-gray-300 dark:text-gray-600 cursor-grab active:cursor-grabbing p-1 hover:text-gray-500 dark:hover:text-gray-400">
+<span class="material-icons-round">drag_indicator</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+<span class="material-symbols-outlined">local_cafe</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-semibold text-text-light dark:text-text-dark text-base">Beverages</h3>
+<p class="text-xs text-gray-500 mt-0.5">6 items active</p>
+</div>
+<div class="flex items-center gap-3 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-gray-400 hover:text-primary dark:hover:text-white transition-colors rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+<span class="material-icons-round text-xl">edit</span>
+</button>
+</div>
+<div class="h-8 w-px bg-gray-100 dark:bg-gray-800 mx-2"></div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="group bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-all flex items-center gap-4 cursor-grab active:cursor-grabbing">
+<div class="text-gray-300 dark:text-gray-600 cursor-grab active:cursor-grabbing p-1 hover:text-gray-500 dark:hover:text-gray-400">
+<span class="material-icons-round">drag_indicator</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+<span class="material-symbols-outlined">cookie</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-semibold text-text-light dark:text-text-dark text-base">Snacks</h3>
+<p class="text-xs text-gray-500 mt-0.5">15 items active</p>
+</div>
+<div class="flex items-center gap-3 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-gray-400 hover:text-primary dark:hover:text-white transition-colors rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+<span class="material-icons-round text-xl">edit</span>
+</button>
+</div>
+<div class="h-8 w-px bg-gray-100 dark:bg-gray-800 mx-2"></div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="pt-6 pb-2">
+<div class="bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-lg p-4 flex gap-3">
+<span class="material-icons-round text-blue-500 dark:text-blue-400">info</span>
+<div class="text-sm text-blue-800 dark:text-blue-200">
+<p class="font-semibold mb-1">Category Visibility</p>
+<p class="opacity-80">Only active categories with at least one active item will be visible to customers on the ordering app. You can drag and drop categories to reorder how they appear in the menu.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+
+</body></html>

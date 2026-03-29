@@ -1,0 +1,35 @@
+﻿Analyzing admin_release_screen.dart...                          
+
+   info - Statements in an if should be enclosed in a block - lib\features\admin\screens\admin_release_screen.dart:309:9 - curly_braces_in_flow_control_structures
+   info - Unnecessary use of 'toList' in a spread - lib\features\admin\screens\admin_release_screen.dart:624:14 - unnecessary_to_list_in_spreads
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\screens\admin_release_screen.dart:784:26 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\screens\admin_release_screen.dart:787:26 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\screens\admin_release_screen.dart:806:62 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\screens\admin_release_screen.dart:1502:39 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\screens\admin_release_screen.dart:1808:33 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\admin\screens\admin_release_screen.dart:1858:36 - deprecated_member_use
+   info - Unnecessary use of multiple underscores - lib\features\admin\screens\admin_release_screen.dart:1881:43 - unnecessary_underscores
+   info - Unnecessary use of multiple underscores - lib\features\admin\screens\admin_release_screen.dart:1881:47 - unnecessary_underscores
+
+flutter : 10 issues 
+found. (ran in 
+27089.6s)
+At line:1 char:1
++ flutter analyze lib/f
+eatures/admin/screens/a
+dmin_release_screen.dar
+t  ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (10 issues fou   
+ nd. (ran in 27089.    
+6s):String) [], Re    
+moteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 

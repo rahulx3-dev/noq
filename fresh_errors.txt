@@ -1,0 +1,26 @@
+﻿Analyzing 2 items...                                            
+
+warning - The '!' will have no effect because the receiver can't be null - lib\core\utils\slot_helper.dart:75:40 - unnecessary_non_null_assertion
+   info - Don't invoke 'print' in production code - lib\core\utils\slot_helper.dart:102:7 - avoid_print
+
+flutter : 2 issues 
+found. (ran in 2.4s)
+At line:1 char:1
++ flutter analyze lib/f
+eatures/admin/screens/a
+dmin_release_screen.dar
+t  ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (2 issues foun   
+ d. (ran in 2.4s):S    
+tring) [], RemoteE    
+xception
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 

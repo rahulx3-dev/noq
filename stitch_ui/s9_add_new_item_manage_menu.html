@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Menu Item | NOQ Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary-coral: #FF5F52;
+            --primary-black: #111111;
+            --background-gray: #F9FAFB;
+        }
+        @layer base {
+            body {
+                @apply font-sans antialiased bg-[#F9FAFB] text-[#111111];
+            }
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#111111",
+                        coral: "#FF5F52",
+                        surface: "#FFFFFF",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="h-screen overflow-hidden flex">
+<aside class="w-20 lg:w-64 bg-white border-r border-gray-200 flex flex-col h-full flex-shrink-0 z-20">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 bg-black text-white rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">local_dining</span>
+</div>
+<span class="hidden lg:block text-xl font-bold tracking-tight">NOQ Admin</span>
+</div>
+<nav class="flex-1 px-4 space-y-2 py-4">
+<a class="flex items-center justify-center lg:justify-start gap-3 px-4 py-3 text-sm font-medium text-gray-500 rounded-xl hover:bg-gray-50 transition-colors group" href="#">
+<span class="material-icons-round text-xl">dashboard</span>
+<span class="hidden lg:block text-sm">Dashboard</span>
+</a>
+<a class="flex items-center justify-center lg:justify-start gap-3 px-4 py-3 text-sm font-medium text-white bg-black rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">restaurant_menu</span>
+<span class="hidden lg:block text-sm">Menu Management</span>
+</a>
+<a class="flex items-center justify-center lg:justify-start gap-3 px-4 py-3 text-sm font-medium text-gray-500 rounded-xl hover:bg-gray-50 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">receipt_long</span>
+<span class="hidden lg:block text-sm">Orders</span>
+</a>
+<a class="flex items-center justify-center lg:justify-start gap-3 px-4 py-3 text-sm font-medium text-gray-500 rounded-xl hover:bg-gray-50 transition-colors group" href="#">
+<span class="material-icons-round text-xl">insert_chart_outlined</span>
+<span class="hidden lg:block text-sm">Stats &amp; Reports</span>
+</a>
+<a class="flex items-center justify-center lg:justify-start gap-3 px-4 py-3 text-sm font-medium text-gray-500 rounded-xl hover:bg-gray-50 transition-colors group" href="#">
+<span class="material-icons-round text-xl">person</span>
+<span class="hidden lg:block text-sm">Profile</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-100">
+<button class="flex items-center justify-center lg:justify-start gap-3 w-full px-4 py-3 text-sm font-medium text-red-500 rounded-xl hover:bg-red-50 transition-colors">
+<span class="material-icons-round text-xl">logout</span>
+<span class="hidden lg:block text-sm">Log Out</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 h-full overflow-y-auto bg-[#F9FAFB]">
+<div class="max-w-3xl mx-auto px-6 py-8">
+<header class="flex items-center justify-between mb-8">
+<div>
+<h1 class="text-2xl font-bold text-black tracking-tight">Add New Food Item</h1>
+<p class="text-gray-500 text-sm mt-1">Fill in the details to add a new dish to your menu.</p>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-600 hover:text-black transition-colors">
+<span class="material-icons-round text-lg">close</span>
+                    Cancel
+                </button>
+</header>
+<form class="space-y-8">
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-bold text-black block">Item Name</label>
+<input class="w-full bg-gray-50 border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-black focus:border-black transition-all" placeholder="e.g. Butter Chicken Bowl" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-black block">Price (₹)</label>
+<input class="w-full bg-gray-50 border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-black focus:border-black transition-all" placeholder="0.00" type="number"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="text-sm font-bold text-black block">Category</label>
+<select class="w-full bg-gray-50 border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-black focus:border-black appearance-none transition-all">
+<option>Select Category</option>
+<option>Main Course</option>
+<option>Starters</option>
+<option>Beverages</option>
+<option>Desserts</option>
+</select>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-8">
+<div class="space-y-4">
+<label class="text-sm font-bold text-black block uppercase tracking-wider">Availability</label>
+<div class="flex flex-wrap gap-4">
+<label class="flex-1 min-w-[140px] cursor-pointer group">
+<input checked="" class="sr-only peer" name="avail" type="radio"/>
+<div class="p-4 border-2 border-gray-100 rounded-xl bg-gray-50 peer-checked:border-black peer-checked:bg-black peer-checked:text-white transition-all flex flex-col items-center gap-2">
+<span class="material-symbols-outlined">schedule</span>
+<span class="text-xs font-bold">Session Based</span>
+</div>
+</label>
+<label class="flex-1 min-w-[140px] cursor-pointer group">
+<input class="sr-only peer" name="avail" type="radio"/>
+<div class="p-4 border-2 border-gray-100 rounded-xl bg-gray-50 peer-checked:border-black peer-checked:bg-black peer-checked:text-white transition-all flex flex-col items-center gap-2">
+<span class="material-symbols-outlined">sunny</span>
+<span class="text-xs font-bold">Full-day</span>
+</div>
+</label>
+</div>
+</div>
+<div class="space-y-4">
+<label class="text-sm font-bold text-black block uppercase tracking-wider">Session Selection</label>
+<div class="flex flex-wrap gap-3">
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="px-5 py-2.5 rounded-full border border-gray-200 text-sm font-medium peer-checked:bg-coral peer-checked:border-coral peer-checked:text-white transition-all">Morning</div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="px-5 py-2.5 rounded-full border border-gray-200 text-sm font-medium peer-checked:bg-coral peer-checked:border-coral peer-checked:text-white transition-all">Lunch</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="px-5 py-2.5 rounded-full border border-gray-200 text-sm font-medium peer-checked:bg-coral peer-checked:border-coral peer-checked:text-white transition-all">Tea</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="px-5 py-2.5 rounded-full border border-gray-200 text-sm font-medium peer-checked:bg-coral peer-checked:border-coral peer-checked:text-white transition-all">Dinner</div>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-4">
+<label class="text-sm font-bold text-black block uppercase tracking-wider">Food Image</label>
+<div class="border-2 border-dashed border-gray-200 rounded-2xl p-12 flex flex-col items-center justify-center bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer group">
+<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
+<span class="material-icons-round text-3xl text-coral">photo_camera</span>
+</div>
+<p class="text-sm font-bold text-black">Click or drag to upload</p>
+<p class="text-xs text-gray-400 mt-1">PNG, JPG up to 5MB</p>
+</div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex items-center justify-between">
+<div>
+<h4 class="font-bold text-black">Is Ready-made?</h4>
+<p class="text-xs text-gray-500 mt-1">Does this item require cooking time?</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-coral"></div>
+</label>
+</div>
+<div class="pt-6">
+<button class="w-full bg-black text-white py-4 rounded-2xl font-bold text-lg hover:bg-gray-900 shadow-xl shadow-black/10 active:scale-[0.98] transition-all" type="submit">
+                        Save Item
+                    </button>
+</div>
+</form>
+</div>
+</main>
+
+</body></html>

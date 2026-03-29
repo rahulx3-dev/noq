@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unified Staff Dashboard - NOQ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1A2E05", 
+              secondary: "#9BEF6B", 
+              accent: "#E9F0E6", 
+              "background-light": "#F9FAFB", 
+              "background-dark": "#0D1117",
+              "surface-light": "#FFFFFF",
+              "surface-dark": "#161B22",
+              "text-primary-light": "#1A2E05",
+              "text-primary-dark": "#FFFFFF",
+              "text-secondary-light": "#6B7280",
+              "text-secondary-dark": "#9CA3AF",
+            },
+            fontFamily: {
+              display: ['"Plus Jakarta Sans"', 'sans-serif'],
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              'xl': '1rem',
+              '2xl': '1.5rem',
+              '3xl': '2rem',
+            },
+            boxShadow: {
+                'subtle': '0 2px 10px rgba(0, 0, 0, 0.03)',
+                'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+            }
+          },
+        },
+      };
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }.hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-text-primary-light dark:text-text-primary-dark font-sans antialiased overflow-hidden relative">
+<div class="fixed top-0 w-full z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-6 py-3 flex justify-between items-center text-sm font-semibold">
+<span class="">9:41</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[18px]">wifi</span>
+<span class="material-symbols-outlined text-[18px] rotate-90">battery_full</span>
+</div>
+</div>
+<main class="pt-16 pb-24 px-4 max-w-md mx-auto h-screen flex flex-col">
+<header class="mb-2 mt-2">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h1 class="text-2xl font-bold text-primary dark:text-white">Tamarind House</h1>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-lg font-bold text-gray-800 dark:text-gray-200">09:41 AM</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-sm font-semibold text-gray-900 dark:text-white"><br/></span>
+<div class="flex items-center gap-1.5 px-2 py-1 bg-green-100 dark:bg-green-900/30 rounded-md">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-xs font-bold text-green-700 dark:text-green-300 uppercase">Active</span>
+</div>
+</div>
+</div>
+</header>
+<div class="mb-4">
+<div class="flex justify-between items-center mb-2 px-1">
+<h2 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Time Slots</h2>
+<span class="text-xs font-medium text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+            Next slot in 10 mins
+        </span>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 hide-scrollbar">
+<button class="flex-none bg-primary text-white px-4 py-2.5 rounded-xl flex flex-col items-start gap-0.5 shadow-md min-w-[140px] border border-primary">
+<span class="text-xs font-medium opacity-80">Current</span>
+<span class="text-sm font-bold">10:30 - 11:00</span>
+</button>
+<button class="flex-none bg-white dark:bg-surface-dark text-gray-600 dark:text-gray-300 px-4 py-2.5 rounded-xl flex flex-col items-start gap-0.5 shadow-sm border border-gray-200 dark:border-gray-800 min-w-[140px]">
+<span class="text-xs font-medium opacity-60">Upcoming</span>
+<span class="text-sm font-bold">11:00 - 11:30</span>
+</button>
+<button class="flex-none bg-white dark:bg-surface-dark text-gray-600 dark:text-gray-300 px-4 py-2.5 rounded-xl flex flex-col items-start gap-0.5 shadow-sm border border-gray-200 dark:border-gray-800 min-w-[140px]">
+<span class="text-xs font-medium opacity-60">Upcoming</span>
+<span class="text-sm font-bold">11:30 - 12:00</span>
+</button>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex gap-2 overflow-x-auto pb-1 hide-scrollbar">
+<button class="flex-none px-4 py-1.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-bold shadow-sm whitespace-nowrap">
+            Pending (24)
+        </button>
+<button class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-surface-dark text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 text-sm font-medium whitespace-nowrap">
+            Served
+        </button>
+<button class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-surface-dark text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 text-sm font-medium whitespace-nowrap">
+            Skipped
+        </button>
+<button class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-surface-dark text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 text-sm font-medium whitespace-nowrap">
+            Partial
+        </button>
+<button class="flex-none px-4 py-1.5 rounded-full bg-white dark:bg-surface-dark text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 text-sm font-medium whitespace-nowrap">
+            Scheduled
+        </button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-4 pb-4 hide-scrollbar">
+<div class="bg-white dark:bg-surface-dark p-0 rounded-2xl shadow-card border border-gray-200 dark:border-gray-800 overflow-hidden group">
+<div class="p-4 flex gap-4">
+<div class="flex flex-col items-center gap-1">
+<div class="w-16 h-16 rounded-xl bg-secondary flex items-center justify-center text-primary font-bold text-2xl shadow-sm border-2 border-primary/10">
+                    24
+                </div>
+<span class="text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase">Token</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight">Sarah Jenkins</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 font-medium mt-0.5">ID: #8821</p>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-[10px] font-bold uppercase tracking-wide border border-gray-200 dark:border-gray-700">
+                        Prep
+                    </span>
+</div>
+<div class="mt-3 space-y-1">
+<div class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
+<span class="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+<span class="">Chicken Caesar Wrap</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
+<span class="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
+<span class="">Apple Juice</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 divide-x divide-gray-200 dark:divide-gray-700 border-t border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/30">
+<button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 transition-colors group/btn">
+<span class="material-symbols-outlined text-orange-600 dark:text-orange-400 text-xl group-hover/btn:scale-110 transition-transform">remove_shopping_cart</span>
+<span class="text-[10px] font-bold text-orange-700 dark:text-orange-300">Partial</span>
+</button>
+<button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors group/btn">
+<span class="material-symbols-outlined text-red-600 dark:text-red-400 text-xl group-hover/btn:scale-110 transition-transform">skip_next</span>
+<span class="text-[10px] font-bold text-red-700 dark:text-red-300">Skip</span>
+</button>
+<button class="py-3 flex flex-col items-center justify-center gap-1 bg-primary text-white hover:bg-primary/90 transition-colors group/btn">
+<span class="material-symbols-outlined text-xl group-hover/btn:scale-110 transition-transform">check_circle</span>
+<span class="text-[10px] font-bold">Ready</span>
+</button>
+</div>
+</div>
+<div class="bg-red-50 dark:bg-red-900/10 p-0 rounded-2xl shadow-card border border-red-200 dark:border-red-800 overflow-hidden opacity-100">
+<div class="p-4 flex gap-4">
+<div class="flex flex-col items-center gap-1">
+<div class="w-16 h-16 rounded-xl bg-white/80 dark:bg-gray-800 flex items-center justify-center text-red-500 dark:text-red-400 font-bold text-2xl border-2 border-red-100 dark:border-red-800">
+                    22
+                </div>
+<span class="text-[10px] font-bold text-red-400 dark:text-red-300 uppercase">Token</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight">David Kim</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 font-medium mt-0.5">ID: #4402</p>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 text-[10px] font-bold uppercase tracking-wide border border-red-200 dark:border-red-700">
+                        Skipped
+                    </span>
+</div>
+<div class="mt-3 space-y-1">
+<div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+<span class="w-1.5 h-1.5 rounded-full bg-red-300"></span>
+<span class="">Veggie Pasta Box</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 divide-x divide-red-200 dark:divide-red-800 border-t border-red-200 dark:border-red-800 bg-white/40 dark:bg-white/5">
+<button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-red-100 dark:hover:bg-red-800/30 transition-colors group/btn">
+<span class="material-symbols-outlined text-orange-600 dark:text-orange-400 text-xl group-hover/btn:scale-110 transition-transform">remove_shopping_cart</span>
+<span class="text-[10px] font-bold text-orange-700 dark:text-orange-300">Partial</span>
+</button>
+<button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100 dark:hover:bg-gray-800/30 transition-colors group/btn opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-xl">skip_next</span>
+<span class="text-[10px] font-bold text-gray-500 dark:text-gray-400">Skipped</span>
+</button>
+<button class="py-3 flex flex-col items-center justify-center gap-1 bg-green-600 text-white hover:bg-green-700 transition-colors group/btn">
+<span class="material-symbols-outlined text-xl group-hover/btn:scale-110 transition-transform">check_circle</span>
+<span class="text-[10px] font-bold">Ready</span>
+</button>
+</div>
+</div>
+<div class="bg-yellow-50 dark:bg-yellow-900/10 p-0 rounded-2xl shadow-card border border-yellow-200 dark:border-yellow-800 overflow-hidden">
+<div class="p-4 flex gap-4">
+<div class="flex flex-col items-center gap-1">
+<div class="w-16 h-16 rounded-xl bg-white/80 dark:bg-gray-800 flex items-center justify-center text-yellow-600 dark:text-yellow-400 font-bold text-2xl border-2 border-yellow-100 dark:border-yellow-800">
+                    27
+                </div>
+<span class="text-[10px] font-bold text-yellow-500 dark:text-yellow-300 uppercase">Token</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight">Olivia Brown</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 font-medium mt-0.5">ID: #5591</p>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-200 text-[10px] font-bold uppercase tracking-wide border border-yellow-200 dark:border-yellow-700">
+                        Partial
+                    </span>
+</div>
+<div class="mt-3 space-y-1">
+<div class="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500">
+<span class="material-symbols-outlined text-green-500 text-sm">check</span>
+<span class="line-through">Fruit Salad</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200 font-semibold">
+<span class="material-symbols-outlined text-orange-500 text-sm">pending</span>
+<span class="">Hot Panini (Cooking)</span>
+</div>
+<div class="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500">
+<span class="material-symbols-outlined text-green-500 text-sm">check</span>
+<span class="line-through">Water</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 divide-x divide-yellow-200 dark:divide-yellow-800 border-t border-yellow-200 dark:border-yellow-800 bg-white/40 dark:bg-white/5">
+<button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-yellow-100 dark:hover:bg-yellow-800/30 transition-colors group/btn">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-300 text-xl group-hover/btn:scale-110 transition-transform">edit_note</span>
+<span class="text-[10px] font-bold text-gray-700 dark:text-gray-300">Notes</span>
+</button>
+<button class="py-3 flex flex-col items-center justify-center gap-1 bg-green-600 text-white hover:bg-green-700 transition-colors group/btn">
+<span class="material-symbols-outlined text-xl group-hover/btn:scale-110 transition-transform">check_circle</span>
+<span class="text-[10px] font-bold">Complete Order</span>
+</button>
+</div>
+</div>
+<div class="bg-green-50 dark:bg-green-900/10 p-0 rounded-2xl shadow-card border border-green-200 dark:border-green-800 overflow-hidden">
+<div class="p-4 flex gap-4">
+<div class="flex flex-col items-center gap-1">
+<div class="w-16 h-16 rounded-xl bg-white/80 dark:bg-gray-800 flex items-center justify-center text-green-600 dark:text-green-400 font-bold text-2xl border-2 border-green-100 dark:border-green-800">
+                    25
+                </div>
+<span class="text-[10px] font-bold text-green-500 dark:text-green-300 uppercase">Token</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight">Michael Chen</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 font-medium mt-0.5">ID: #9032</p>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-200 text-[10px] font-bold uppercase tracking-wide border border-green-200 dark:border-green-700">
+                        Served
+                    </span>
+</div>
+<div class="mt-3 space-y-1">
+<div class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+<span class="">Ham &amp; Cheese Sandwich</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800 pb-safe pt-2 px-6 shadow-[0_-5px_20px_rgba(0,0,0,0.03)] z-40">
+<div class="flex justify-around items-center h-16 max-w-md mx-auto">
+<button class="flex flex-col items-center gap-1 w-16 group">
+<div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-secondary/20 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-secondary text-2xl">home</span>
+</div>
+<span class="text-[10px] font-semibold text-primary dark:text-secondary">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 group">
+<div class="w-10 h-10 rounded-full hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-white text-2xl">soup_kitchen</span>
+</div>
+<span class="text-[10px] font-medium text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-white">Kitchen</span>
+</button>
+<button class="flex flex-col items-center gap-1 w-16 group">
+<div class="w-10 h-10 rounded-full hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-white text-2xl">person</span>
+</div>
+<span class="text-[10px] font-medium text-gray-400 dark:text-gray-500 group-hover:text-primary dark:group-hover:text-white">Profile</span>
+</button>
+</div>
+<div class="w-full flex justify-center pb-2 pt-1">
+<div class="w-32 h-1 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+</div>
+</nav>
+</body></html>

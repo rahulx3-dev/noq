@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pickmee! - Logout Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#F28C60", 
+              secondary: "#2D2638", 
+              "background-light": "#FDFBF7", 
+              "background-dark": "#1E1A26", 
+              "card-light": "#FFFFFF",
+              "card-dark": "#2D2638",
+              "accent-green": "#5D9C59", 
+              "accent-gray": "#9CA3AF",
+            },
+            fontFamily: {
+              display: ["Playfair Display", "serif"], 
+              sans: ["DM Sans", "sans-serif"], 
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              xl: "1.5rem",
+              '2xl': "2rem",
+            },
+            boxShadow: {
+              'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+              'glow': '0 4px 20px -2px rgba(242, 140, 96, 0.4)',
+            }
+          },
+        },
+      };
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-secondary dark:text-gray-100 font-sans antialiased min-h-screen flex flex-col transition-colors duration-300 relative">
+<div class="fixed inset-0 z-[100] flex items-center justify-center px-6">
+<div class="absolute inset-0 bg-secondary/40 dark:bg-black/60 backdrop-blur-sm"></div>
+<div class="relative w-full max-w-sm bg-card-light dark:bg-card-dark rounded-3xl p-6 shadow-2xl transform transition-all scale-100 border border-gray-100 dark:border-gray-800">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-2xl bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center mb-5 text-primary">
+<span class="material-icons-round text-3xl">logout</span>
+</div>
+<h3 class="text-xl font-display font-bold text-secondary dark:text-white mb-2">Log Out?</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mb-8 max-w-[200px] leading-relaxed">
+                    Are you sure you want to log out of your account?
+                </p>
+<div class="grid grid-cols-2 gap-4 w-full">
+<button class="w-full py-3.5 px-4 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-bold text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        Cancel
+                    </button>
+<button class="w-full py-3.5 px-4 rounded-xl bg-primary text-white font-bold text-sm shadow-glow hover:bg-orange-600 transition-colors flex items-center justify-center gap-2">
+<span>Logout</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<header class="px-6 pt-12 pb-8 bg-transparent z-10 blur-[2px] flex flex-col items-center justify-center text-center">
+<div class="relative mb-4">
+<div class="w-24 h-24 rounded-full bg-orange-100 dark:bg-opacity-20 flex items-center justify-center overflow-hidden border-4 border-white dark:border-gray-700 shadow-lg">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALomB8nM1dhpUsGtU9dwGFvxqBcBzhXRW0iiev7KrFck3_zpjkK48laDuh46Q5ANJjHVJ4CxCLeEbEPzqUjtr5N_RI2MZzmsvByPFL5KHMmDASMab9s5TC15aN3zYrtLp0e8ilD0eEtEslpn6FFBiz0Hr66N4pW-etpngOgfwJ5MgUUOMGI2HQR2RkPSLG1S_qyU8jg3GiHBksSR-RtuJZ17oB7f1IR9bR6tbUhsb2fPlMkZvh7Nm9o-1TghTjixhJSQfOCv6Hs0w"/>
+</div>
+<button class="absolute bottom-0 right-0 w-8 h-8 bg-secondary dark:bg-primary text-white rounded-full flex items-center justify-center border-2 border-white dark:border-gray-800 shadow-md">
+<span class="material-icons-round text-sm">edit</span>
+</button>
+</div>
+<h1 class="text-2xl font-display font-bold text-secondary dark:text-white leading-tight mb-1">Alex Morgan</h1>
+<p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Student ID: #8829304</p>
+</header>
+<main class="flex-1 px-6 pb-24 overflow-y-auto no-scrollbar blur-[2px]">
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-2xl shadow-soft text-center border border-gray-100 dark:border-gray-800">
+<span class="text-primary font-bold text-xl block mb-1">12</span>
+<span class="text-xs text-gray-400 uppercase tracking-wide font-medium">Orders this month</span>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-2xl shadow-soft text-center border border-gray-100 dark:border-gray-800">
+<span class="text-primary font-bold text-xl block mb-1">1450</span>
+<span class="text-xs text-gray-400 uppercase tracking-wide font-medium">Loyalty Points</span>
+</div>
+</div>
+<h2 class="text-lg font-display font-bold text-secondary dark:text-white mb-4">Settings</h2>
+<div class="space-y-3">
+<button class="w-full bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-soft flex items-center justify-between group hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-500">
+<span class="material-icons-round text-xl">person</span>
+</div>
+<div class="text-left">
+<h3 class="font-bold text-secondary dark:text-gray-200 text-sm">Edit Profile</h3>
+<p class="text-xs text-gray-400">Personal details &amp; preferences</p>
+</div>
+</div>
+<span class="material-icons-round text-gray-300">chevron_right</span>
+</button>
+<button class="w-full bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-soft flex items-center justify-between group hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-500">
+<span class="material-icons-round text-xl">notifications</span>
+</div>
+<div class="text-left">
+<h3 class="font-bold text-secondary dark:text-gray-200 text-sm">Notifications</h3>
+<p class="text-xs text-gray-400">Order updates &amp; news</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<span class="material-icons-round text-gray-300">chevron_right</span>
+</div>
+</button>
+<button class="w-full bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-soft flex items-center justify-between group hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600">
+<span class="material-icons-round text-xl">lock</span>
+</div>
+<div class="text-left">
+<h3 class="font-bold text-secondary dark:text-gray-200 text-sm">Change Password</h3>
+<p class="text-xs text-gray-400">Security &amp; privacy</p>
+</div>
+</div>
+<span class="material-icons-round text-gray-300">chevron_right</span>
+</button>
+<button class="w-full bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-soft flex items-center justify-between group hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-500">
+<span class="material-icons-round text-xl">credit_card</span>
+</div>
+<div class="text-left">
+<h3 class="font-bold text-secondary dark:text-gray-200 text-sm">Payment Methods</h3>
+<p class="text-xs text-gray-400">Manage saved cards</p>
+</div>
+</div>
+<span class="material-icons-round text-gray-300">chevron_right</span>
+</button>
+<button class="w-full bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-soft flex items-center justify-between group hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-800 mt-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-red-500">
+<span class="material-icons-round text-xl">logout</span>
+</div>
+<div class="text-left">
+<h3 class="font-bold text-red-500 text-sm">Log Out</h3>
+</div>
+</div>
+</button>
+<div class="text-center mt-8 pb-4">
+<p class="text-[10px] text-gray-400">Version 2.4.0</p>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full bg-white dark:bg-card-dark border-t border-gray-100 dark:border-gray-800 pb-6 pt-2 px-6 rounded-t-3xl shadow-lg z-50 blur-[2px]">
+<div class="flex justify-between items-center">
+<button class="p-2 flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors">
+<span class="material-icons-round text-2xl">home</span>
+</button>
+<button class="p-2 flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors">
+<span class="material-icons-round text-2xl">receipt</span>
+</button>
+<div class="-mt-8">
+<button class="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-glow transform transition-transform active:scale-95">
+<span class="material-icons-round text-2xl">room_service</span>
+</button>
+</div>
+<button class="p-2 flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors">
+<span class="material-icons-round text-2xl">confirmation_number</span>
+</button>
+<button class="p-2 flex flex-col items-center gap-1 text-primary dark:text-primary transition-colors">
+<span class="material-icons-round text-2xl">person</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+</button>
+</div>
+</nav>
+
+</body></html>

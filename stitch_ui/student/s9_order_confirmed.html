@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Confirmed - Pickmee!</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF8C66", 
+              "primary-dark": "#E67350",
+              "background-light": "#F9F9F9",
+              "background-dark": "#1F1D2B",
+              "card-light": "#FFFFFF",
+              "card-dark": "#2D2B3B",
+              "text-main-light": "#2D2338", 
+              "text-main-dark": "#EAEAEA",
+              "text-muted-light": "#9CA3AF",
+              "text-muted-dark": "#6B7280",
+              "accent-green": "#4ADE80",
+              "accent-green-dark": "#22C55E",
+            },
+            fontFamily: {
+              display: ["Fraunces", "serif"],
+              sans: ["DM Sans", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              'xl': '1.5rem',
+              '2xl': '2rem',
+              '3xl': '2.5rem',
+            },
+            boxShadow: {
+              'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+              'glow': '0 0 20px rgba(74, 222, 128, 0.3)',
+            }
+          },
+        },
+      };
+    </script>
+<style>
+        body {
+            min-height: max(844px, 100dvh);
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 8px;
+            height: 16px;
+            background: #FF8C66;
+            top: -20px;
+            opacity: 0;
+        }
+        .confetti-piece:nth-child(1) { left: 7%; transform: rotate(-40deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 182ms; animation-duration: 1116ms; }
+        .confetti-piece:nth-child(2) { left: 14%; transform: rotate(4deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 161ms; animation-duration: 1076ms; }
+        .confetti-piece:nth-child(3) { left: 21%; transform: rotate(-51deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 481ms; animation-duration: 1103ms; }
+        .confetti-piece:nth-child(4) { left: 28%; transform: rotate(61deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 334ms; animation-duration: 708ms; }
+        .confetti-piece:nth-child(5) { left: 35%; transform: rotate(-52deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 302ms; animation-duration: 776ms; }
+        .confetti-piece:nth-child(6) { left: 42%; transform: rotate(38deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 180ms; animation-duration: 1168ms; }
+        .confetti-piece:nth-child(7) { left: 49%; transform: rotate(11deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 395ms; animation-duration: 1200ms; }
+        .confetti-piece:nth-child(8) { left: 56%; transform: rotate(49deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 14ms; animation-duration: 887ms; }
+        .confetti-piece:nth-child(9) { left: 63%; transform: rotate(-72deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 149ms; animation-duration: 805ms; }
+        .confetti-piece:nth-child(10) { left: 70%; transform: rotate(10deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 351ms; animation-duration: 1059ms; }
+        .confetti-piece:nth-child(11) { left: 77%; transform: rotate(4deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 307ms; animation-duration: 1132ms; }
+        .confetti-piece:nth-child(12) { left: 84%; transform: rotate(42deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 464ms; animation-duration: 776ms; }
+        .confetti-piece:nth-child(13) { left: 91%; transform: rotate(-72deg); animation: makeItRain 1000ms infinite ease-out; animation-delay: 429ms; animation-duration: 818ms; }
+        @keyframes makeItRain {
+            from { opacity: 0; }
+            50% { opacity: 1; }
+            to { transform: translateY(200px); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-sans text-text-main-light dark:text-text-main-dark min-h-screen flex justify-center items-center p-4 antialiased transition-colors duration-200">
+<div class="w-full max-w-md bg-background-light dark:bg-background-dark h-[844px] overflow-hidden relative rounded-[2.5rem] shadow-2xl border-8 border-white dark:border-gray-800 flex flex-col">
+<div class="absolute top-0 left-0 w-full h-1/2 overflow-hidden pointer-events-none z-0">
+<div class="confetti-piece bg-yellow-400"></div>
+<div class="confetti-piece bg-blue-400"></div>
+<div class="confetti-piece bg-primary"></div>
+<div class="confetti-piece bg-purple-400"></div>
+<div class="confetti-piece bg-green-400"></div>
+<div class="confetti-piece bg-yellow-400"></div>
+<div class="confetti-piece bg-primary"></div>
+<div class="confetti-piece bg-pink-400"></div>
+<div class="confetti-piece bg-blue-400"></div>
+<div class="confetti-piece bg-green-400"></div>
+<div class="confetti-piece bg-purple-400"></div>
+<div class="confetti-piece bg-yellow-400"></div>
+<div class="confetti-piece bg-primary"></div>
+</div>
+<header class="pt-8 pb-4 px-6 flex items-center justify-between bg-transparent sticky top-0 z-10">
+<div class="w-10"></div> 
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary bg-white">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_tTeg95OPqhB6oxLx5aB-S32bnf0htljmYx3H4MgnzR7CSlWvZwfGKSDytukjw3SJLS6dOluHz2r1790CYKVxQRM8pfvYPhUKA97bG0IV5ZoD6K_nAKWDjsN5VITuVarMx3tCFnffb8s60yoA6OrS2OXOGf6D6LS0IObK745Cyw47uMXQLLHzhUndgERCf0qQxxJ4zkssynMxbkfS78UPz6HoUtLuu4mXTqtfzHyvZo3eroVOP31GoUbIzaAgeuhpWwA3nf8_Ets"/>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto px-6 py-2 flex flex-col items-center justify-center space-y-8 z-10">
+<div class="text-center space-y-6">
+<div class="relative inline-block">
+<div class="w-24 h-24 bg-accent-green rounded-full flex items-center justify-center shadow-glow animate-bounce">
+<span class="material-symbols-outlined text-5xl text-white">check_circle</span>
+</div>
+<div class="absolute -inset-2 bg-accent-green opacity-20 rounded-full blur-md"></div>
+</div>
+<div class="space-y-2">
+<h1 class="font-display font-bold text-3xl text-text-main-light dark:text-text-main-dark">Order Confirmed!</h1>
+<p class="text-text-muted-light dark:text-text-muted-dark text-sm max-w-[260px] mx-auto leading-relaxed">
+                        Yay! Your food is being prepared. Present this token at the counter.
+                    </p>
+</div>
+</div>
+<div class="w-full bg-white dark:bg-card-dark p-8 rounded-3xl shadow-soft border border-gray-100 dark:border-gray-700 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-[100px] -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="absolute bottom-0 left-0 w-24 h-24 bg-accent-green/5 rounded-tr-[80px] -ml-6 -mb-6 transition-transform group-hover:scale-110"></div>
+<div class="relative text-center space-y-4">
+<p class="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-widest">Your Token Number</p>
+<div class="font-display font-bold text-6xl text-text-main-light dark:text-text-main-dark tracking-tight">
+                        #402
+                    </div>
+<div class="inline-flex items-center gap-2 bg-gray-50 dark:bg-gray-800/50 px-3 py-1.5 rounded-lg border border-gray-100 dark:border-gray-700/50">
+<span class="material-symbols-outlined text-sm text-primary">schedule</span>
+<span class="text-xs font-medium text-text-muted-dark dark:text-text-muted-light">Est. Pickup: 12:45 PM</span>
+</div>
+</div>
+<div class="relative flex items-center justify-between mt-8">
+<div class="w-4 h-8 bg-background-light dark:bg-background-dark rounded-r-full -ml-8"></div>
+<div class="flex-1 border-b-2 border-dashed border-gray-200 dark:border-gray-600 mx-2"></div>
+<div class="w-4 h-8 bg-background-light dark:bg-background-dark rounded-l-full -mr-8"></div>
+</div>
+<div class="mt-6 flex justify-between items-center text-sm">
+<span class="text-text-muted-light dark:text-text-muted-dark">Items: 3</span>
+<span class="font-bold text-text-main-light dark:text-text-main-dark">$36.50</span>
+</div>
+</div>
+<div class="w-full bg-primary/10 dark:bg-primary/20 rounded-xl p-4 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">info</span>
+<p class="text-xs text-text-main-light dark:text-text-main-dark leading-relaxed">
+                    Please arrive 5 mins before your slot to avoid rush. Your food stays warm in the smart locker!
+                </p>
+</div>
+</main>
+<div class="w-full bg-white dark:bg-card-dark p-6 pb-8 rounded-t-[2rem] shadow-[0_-5px_30px_rgba(0,0,0,0.04)] z-20 space-y-4">
+<button class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 px-6 rounded-2xl shadow-lg shadow-primary/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="text-base">View Order Details</span>
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+</button>
+<button class="w-full bg-transparent border-2 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-text-main-light dark:text-text-main-dark font-bold py-4 px-6 rounded-2xl active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="text-base">Back to Home</span>
+</button>
+</div>
+</div>
+
+</body></html>

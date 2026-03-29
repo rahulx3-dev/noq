@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Profile &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#111111",
+                        secondary: "#F3F4F6",
+                        "background-light": "#FAFAFA",
+                        "background-dark": "#121212",
+                        "surface-dark": "#1E1E1E",
+                        "text-light": "#111111",
+                        "text-dark": "#FFFFFF",
+                        "gray-text": "#6B7280",
+                        "brand-coral": "#FF6B6B", 
+                        "brand-coral-dark": "#E05555",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': '1.25rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-gray-100 dark:bg-gray-900 flex justify-center items-center min-h-screen font-sans">
+<div class="w-full max-w-md h-full min-h-screen sm:min-h-[812px] sm:h-auto bg-background-light dark:bg-background-dark sm:rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col relative transition-colors duration-300">
+<div class="h-12 w-full flex justify-between items-center px-6 pt-2">
+<span class="text-sm font-semibold text-text-light dark:text-text-dark">09:41 AM</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-icons-round text-sm text-text-light dark:text-text-dark">signal_cellular_alt</span>
+<span class="material-icons-round text-sm text-text-light dark:text-text-dark">wifi</span>
+<span class="material-icons-round text-sm text-text-light dark:text-text-dark">battery_full</span>
+</div>
+</div>
+<div class="px-6 pt-4 pb-2">
+<div class="flex items-center justify-between">
+<h1 class="text-2xl font-bold text-text-light dark:text-text-dark tracking-tight">Profile &amp; Settings</h1>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto no-scrollbar px-6 pb-28 pt-4 space-y-6">
+<div class="bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 p-5 rounded-2xl shadow-sm flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
+<span class="material-icons-round text-3xl text-gray-400 dark:text-gray-500">person</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h2 class="text-lg font-bold text-text-light dark:text-text-dark">Sarah Jenkins</h2>
+<span class="bg-primary/10 text-primary dark:bg-white/10 dark:text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Admin</span>
+</div>
+<p class="text-sm text-gray-500 dark:text-gray-400">sarah.jenkins@noq.com</p>
+</div>
+<button class="text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-icons-round">edit</span>
+</button>
+</div>
+<div>
+<h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 ml-1">Canteen Settings</h3>
+<div class="bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden divide-y divide-gray-100 dark:divide-gray-800">
+<button class="w-full p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group text-left">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+<span class="material-symbols-outlined">storefront</span>
+</div>
+<div>
+<p class="font-medium text-text-light dark:text-text-dark text-sm">Canteen Details</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Name, Address, Logo</p>
+</div>
+</div>
+<span class="material-icons-round text-gray-300 group-hover:text-gray-500 dark:text-gray-600 dark:group-hover:text-gray-400">chevron_right</span>
+</button>
+<button class="w-full p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group text-left">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<p class="font-medium text-text-light dark:text-text-dark text-sm">Session Scheduler</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Edit sessions &amp; timings</p>
+</div>
+</div>
+<span class="material-icons-round text-gray-300 group-hover:text-gray-500 dark:text-gray-600 dark:group-hover:text-gray-400">chevron_right</span>
+</button>
+<button class="w-full p-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group text-left">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 flex items-center justify-center">
+<span class="material-symbols-outlined">tune</span>
+</div>
+<div>
+<p class="font-medium text-text-light dark:text-text-dark text-sm">Slot Defaults</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Intervals &amp; Capacity</p>
+</div>
+</div>
+<span class="material-icons-round text-gray-300 group-hover:text-gray-500 dark:text-gray-600 dark:group-hover:text-gray-400">chevron_right</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 ml-1">Menu Management</h3>
+<div class="bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden p-4">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 flex items-center justify-center">
+<span class="material-symbols-outlined">category</span>
+</div>
+<div>
+<p class="font-medium text-text-light dark:text-text-dark text-sm">Food Categories</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Manage active categories</p>
+</div>
+</div>
+<button class="text-xs font-medium text-primary dark:text-white bg-secondary dark:bg-gray-800 px-3 py-1.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    Manage
+                </button>
+</div>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-medium bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+                    Breakfast
+                </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-medium bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+                    Lunch
+                </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-medium bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+                    Snacks
+                </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-medium bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500 border border-dashed border-gray-300 dark:border-gray-700">
+<span class="material-icons-round text-[12px]">add</span> Add
+                </span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 ml-1">System Controls</h3>
+<div class="bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden divide-y divide-gray-100 dark:divide-gray-800">
+<div class="w-full p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gray-50 dark:bg-gray-800/50 text-gray-600 dark:text-gray-400 flex items-center justify-center">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div>
+<p class="font-medium text-text-light dark:text-text-dark text-sm">Order Alerts Sound</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-0 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="w-full p-4 flex items-center justify-between bg-gray-50/50 dark:bg-gray-800/20">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 flex items-center justify-center">
+<span class="material-symbols-outlined">power_settings_new</span>
+</div>
+<div>
+<p class="font-medium text-text-light dark:text-text-dark text-sm">Accepting Orders</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Master switch for system</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-0 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-500"></div>
+</label>
+</div>
+<button class="w-full p-4 flex items-center justify-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors text-red-500 hover:text-red-600">
+<span class="material-icons-round text-sm">logout</span>
+<span class="font-medium text-sm">Log Out</span>
+</button>
+</div>
+</div>
+<div class="h-6"></div>
+</div>
+<div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+<div class="bg-white dark:bg-surface-dark w-full max-w-sm rounded-[1.5rem] shadow-2xl animate-in fade-in zoom-in duration-200 border border-gray-100 dark:border-gray-800">
+<div class="p-6 border-b border-gray-100 dark:border-gray-800">
+<h2 class="text-lg font-bold text-text-light dark:text-text-dark text-center">Add New Staff</h2>
+<p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-1">Create an account for a new staff member</p>
+</div>
+<div class="p-6 space-y-4">
+<div class="space-y-1.5">
+<label class="text-xs font-semibold text-gray-700 dark:text-gray-300 ml-1">Full Name</label>
+<input class="w-full bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark text-sm rounded-xl focus:ring-brand-coral focus:border-brand-coral p-3 placeholder-gray-400 dark:placeholder-gray-600 transition-colors" placeholder="e.g. John Doe" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-semibold text-gray-700 dark:text-gray-300 ml-1">Email Address</label>
+<input class="w-full bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark text-sm rounded-xl focus:ring-brand-coral focus:border-brand-coral p-3 placeholder-gray-400 dark:placeholder-gray-600 transition-colors" placeholder="john@example.com" type="email"/>
+</div>
+<div class="space-y-1.5 relative">
+<label class="text-xs font-semibold text-gray-700 dark:text-gray-300 ml-1">Temporary Password</label>
+<div class="relative">
+<input class="w-full bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark text-sm rounded-xl focus:ring-brand-coral focus:border-brand-coral p-3 pr-10 placeholder-gray-400 dark:placeholder-gray-600 transition-colors" type="password" value="temp1234"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+<span class="material-icons-round text-lg">visibility</span>
+</button>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-semibold text-gray-700 dark:text-gray-300 ml-1">Phone Number <span class="text-gray-400 font-normal">(Optional)</span></label>
+<input class="w-full bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 text-text-light dark:text-text-dark text-sm rounded-xl focus:ring-brand-coral focus:border-brand-coral p-3 placeholder-gray-400 dark:placeholder-gray-600 transition-colors" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-text-light dark:text-text-dark">Set as Active</span>
+<span class="text-[10px] text-gray-500">Enable account immediately</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-0 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-brand-coral"></div>
+</label>
+</div>
+</div>
+<div class="p-6 pt-2 flex gap-3">
+<button class="flex-1 py-3 px-4 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                Cancel
+            </button>
+<button class="flex-1 py-3 px-4 rounded-xl bg-brand-coral hover:bg-brand-coral-dark text-white text-sm font-semibold shadow-lg shadow-brand-coral/30 transition-all hover:scale-[1.02]">
+                Create Account
+            </button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 w-full bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800 pb-6 pt-2 px-6 rounded-t-3xl shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)] z-10">
+<div class="flex justify-between items-center">
+<button class="flex flex-col items-center gap-1 p-2 group">
+<div class="w-10 h-10 rounded-xl bg-transparent text-gray-400 group-hover:text-primary dark:group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-icons-round text-xl">dashboard</span>
+</div>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary dark:group-hover:text-white">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 group">
+<div class="w-10 h-10 rounded-xl bg-transparent text-gray-400 group-hover:text-primary dark:group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-xl">restaurant_menu</span>
+</div>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary dark:group-hover:text-white">Menu</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 group">
+<div class="w-10 h-10 rounded-xl bg-transparent text-gray-400 group-hover:text-primary dark:group-hover:text-white flex items-center justify-center transition-colors relative">
+<span class="material-symbols-outlined text-xl">receipt_long</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-surface-dark"></span>
+</div>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary dark:group-hover:text-white">Orders</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 group">
+<div class="w-10 h-10 rounded-xl bg-transparent text-gray-400 group-hover:text-primary dark:group-hover:text-white flex items-center justify-center transition-colors">
+<span class="material-icons-round text-xl">insert_chart_outlined</span>
+</div>
+<span class="text-[10px] font-medium text-gray-400 group-hover:text-primary dark:group-hover:text-white">Stats</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 group">
+<div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30 transition-all duration-300">
+<span class="material-icons-round text-xl">person</span>
+</div>
+<span class="text-[10px] font-medium text-primary dark:text-white">Profile</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>
