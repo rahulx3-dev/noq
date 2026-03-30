@@ -427,6 +427,7 @@ final kitchenAggregationProvider = Provider<Map<String, dynamic>>((ref) {
   final sessionsAsync = ref.watch(currentDaySessionsWithStatusProvider);
   final categoriesAsync = ref.watch(categoriesProvider);
   final currentSessionId = ref.watch(staffSelectedSessionIdProvider);
+  final now = ref.watch(currentTimeProvider).value ?? DateTime.now();
 
   return ordersAsync.maybeWhen(
     data: (docs) {
@@ -435,6 +436,15 @@ final kitchenAggregationProvider = Provider<Map<String, dynamic>>((ref) {
       categoriesAsync.whenData((list) {
         for (var c in list) {
           categoryNames[c.id] = c.name;
+        }
+      });
+
+      // Find the LIVE slot overall
+      Map<String, dynamic>? liveSlot;
+      String? liveSessionId;
+      sessionsAsync.whenData((sessions) {
+        for (var s in sessions) {
+          if (s['isLive'] == true) liveSessionId = s['id'];
         }
       });
 
@@ -450,6 +460,8 @@ final kitchenAggregationProvider = Provider<Map<String, dynamic>>((ref) {
       });
 
       final Map<String, Map<String, dynamic>> aggregated = {};
+      int totalItemsCount = 0;
+      int pendingPrepCount = 0;
 
       for (var doc in docs) {
         final data = doc.data()!;
@@ -458,39 +470,30 @@ final kitchenAggregationProvider = Provider<Map<String, dynamic>>((ref) {
 
         // Filter by tab
         if (activeTab == 'current') {
-          // For 'current' tab, prioritize the LIVE session first
-          String? liveSessionId;
-          sessionsAsync.whenData((sessions) {
-            for (var s in sessions) {
-              if (s['isLive'] == true) {
-                liveSessionId = s['id'];
-                break;
-              }
-            }
-          });
-
           final effectiveSessionId = currentSessionId ?? liveSessionId;
           if (sessionId != effectiveSessionId) continue;
         } else if (activeTab == 'upcoming') {
           if (sessionId != upcomingSessionId) continue;
         }
-        // 'fullday' = aggregate all for today
 
         // Filter by specific slot if selected
         if (selectedSlotId != null && slotId != selectedSlotId) continue;
 
         final items = List<Map<String, dynamic>>.from(data['items'] ?? []);
         for (var item in items) {
-          final isPreReady = item['isPreReady'] ?? false;
-          if (isPreReady) continue; // Skip items that don't need kitchen prep
-
           final catId = item['categoryIdSnapshot'] ?? 'Other';
           final name = item['nameSnapshot'] ?? 'Unknown Item';
           final itemId = item['itemId'];
           final qty = item['quantity'] as int? ?? 1;
-          final isReady =
-              item['itemStatus'] == 'ready' || item['itemStatus'] == 'served';
+          final isPreReady = item['isPreReady'] ?? false;
+          final isReady = item['itemStatus'] == 'ready' || item['itemStatus'] == 'served';
 
+          // Determine if this specific item is from the current "LIVE" slot
+          // Note: we'd need slot timing data here, but we can approximate or use IDs
+          // For now, if we are in 'current' tab and slotId matches live slot, it's urgent.
+          // BUT: we don't have the liveSlotId easily here without more lookups.
+          // Let's assume ANY item in the 'current' tab is urgent, but upcoming slots are ahead.
+          
           if (!aggregated.containsKey(catId)) {
             aggregated[catId] = {
               'categoryName': categoryNames[catId] ?? catId,
@@ -501,6 +504,7 @@ final kitchenAggregationProvider = Provider<Map<String, dynamic>>((ref) {
 
           final catEntry = aggregated[catId]!;
           catEntry['totalQty'] += qty;
+          totalItemsCount += qty;
 
           final catItems = catEntry['items'] as Map<String, dynamic>;
           if (!catItems.containsKey(itemId)) {
@@ -509,12 +513,18 @@ final kitchenAggregationProvider = Provider<Map<String, dynamic>>((ref) {
               'name': name,
               'orderedQty': 0,
               'preparedQty': 0,
+              'isPreReady': isPreReady,
               'isHighDemand': false,
+              'categories': <String>{}, 
             };
           }
 
           catItems[itemId]['orderedQty'] += qty;
-          if (isReady) catItems[itemId]['preparedQty'] += qty;
+          if (isReady) {
+            catItems[itemId]['preparedQty'] += qty;
+          } else {
+            pendingPrepCount += qty;
+          }
         }
       }
 
@@ -526,23 +536,30 @@ final kitchenAggregationProvider = Provider<Map<String, dynamic>>((ref) {
         });
       });
 
-      // Sort by orderedQty to find real high demand
-      flatItems.sort(
-        (a, b) => (b['orderedQty'] as int).compareTo(a['orderedQty'] as int),
-      );
+      // Sort by remaining demand
+      flatItems.sort((a, b) {
+        final remA = (a['orderedQty'] as int) - (a['preparedQty'] as int);
+        final remB = (b['orderedQty'] as int) - (b['preparedQty'] as int);
+        return remB.compareTo(remA);
+      });
 
-      // Take top 4 as high demand
-      final List<Map<String, dynamic>> highDemandItems = flatItems.take(4).map((
-        item,
-      ) {
-        return {...item, 'label': activeTab == 'fullday' ? 'Peak' : 'High'};
+      // High demand
+      final List<Map<String, dynamic>> highDemandItems = flatItems.take(4).map((item) {
+        return {...item, 'label': activeTab == 'fullday' ? 'Daily Peak' : 'Urgent'};
       }).toList();
 
-      return {'categories': aggregated, 'highDemand': highDemandItems};
+      return {
+        'categories': aggregated,
+        'highDemand': highDemandItems,
+        'totalDemand': totalItemsCount,
+        'pendingPrep': pendingPrepCount,
+      };
     },
     orElse: () => {
       'categories': <String, dynamic>{},
       'highDemand': <Map<String, dynamic>>[],
+      'totalDemand': 0,
+      'pendingPrep': 0,
     },
   );
 });
