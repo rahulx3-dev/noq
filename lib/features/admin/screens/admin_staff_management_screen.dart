@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
@@ -638,23 +639,34 @@ class _AdminStaffManagementScreenState
                                       setDialogState(() => _isAdding = true);
 
                                       try {
-                                        // Check for existing user document by email to prevent duplicates
-                                        final existingQuery = await FirebaseFirestore.instance
-                                            .collection('users')
-                                            .where('email', isEqualTo: email)
-                                            .limit(1)
-                                            .get();
-
-                                        DocumentReference docRef;
-                                        if (existingQuery.docs.isNotEmpty) {
-                                          docRef = existingQuery.docs.first.reference;
-                                          debugPrint('REPAIR: Updating existing user doc ${docRef.id} for $email');
-                                        } else {
-                                          docRef = FirebaseFirestore.instance.collection('users').doc();
-                                          debugPrint('REPAIR: Creating new user doc ${docRef.id} for $email');
+                                        // STEP 1: Create a temporary secondary app for registration
+                                        // This avoids logging out the current admin
+                                        FirebaseApp tempApp;
+                                        try {
+                                          tempApp = await Firebase.initializeApp(
+                                            name: 'TemporaryStaffCreator',
+                                            options: Firebase.app().options,
+                                          );
+                                        } catch (_) {
+                                          tempApp = Firebase.app('TemporaryStaffCreator');
                                         }
 
-                                        await docRef.set({
+                                        FirebaseAuth tempAuth = FirebaseAuth.instanceFor(app: tempApp);
+
+                                        // STEP 2: Create the Auth account
+                                        UserCredential cred = await tempAuth.createUserWithEmailAndPassword(
+                                          email: email,
+                                          password: password,
+                                        );
+                                        
+                                        final newUid = cred.user!.uid;
+
+                                        // STEP 3: Cleanup the temporary app
+                                        await tempApp.delete();
+
+                                        // STEP 4: Create/Set the Firestore document using the actual UID
+                                        await FirebaseFirestore.instance.collection('users').doc(newUid).set({
+                                          'uid': newUid,
                                           'displayName': name,
                                           'email': email,
                                           'role': 'staff', // Enforce 'staff' for permissions
@@ -663,6 +675,7 @@ class _AdminStaffManagementScreenState
                                           'phone': phone,
                                           'isActive': isActive,
                                           'inviteStatus': isActive ? 'accepted' : 'pending',
+                                          'orderAlertsEnabled': true, // Default to true for staff
                                           'invitedBy': FirebaseAuth.instance.currentUser?.uid ?? '',
                                           'createdAt': FieldValue.serverTimestamp(),
                                           'updatedAt': FieldValue.serverTimestamp(),
@@ -672,10 +685,25 @@ class _AdminStaffManagementScreenState
                                           Navigator.pop(dialogContext);
                                           ScaffoldMessenger.of(context).showSnackBar(
                                             SnackBar(
-                                              content: Text(existingQuery.docs.isNotEmpty 
-                                                ? 'Staff profile updated for $name.' 
-                                                : 'Staff profile created for $name.'),
+                                              content: Text('Staff account created for $name. They can now log in.'),
                                               backgroundColor: AdminTheme.success,
+                                              behavior: SnackBarBehavior.floating,
+                                            ),
+                                          );
+                                        }
+                                      } on FirebaseAuthException catch (e) {
+                                        String errorMsg = 'Error: ${e.message}';
+                                        if (e.code == 'email-already-in-use') {
+                                          errorMsg = 'This email is already registered in NOQ.';
+                                        } else if (e.code == 'weak-password') {
+                                          errorMsg = 'The password is too weak.';
+                                        }
+                                        
+                                        if (context.mounted) {
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(
+                                              content: Text(errorMsg),
+                                              backgroundColor: Colors.redAccent,
                                               behavior: SnackBarBehavior.floating,
                                             ),
                                           );
