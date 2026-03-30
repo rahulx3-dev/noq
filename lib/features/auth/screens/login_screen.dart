@@ -140,7 +140,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               controller: _idEmailController,
               style: GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w500),
               decoration: const InputDecoration(
-                hintText: '20248592',
+                hintText: 'e.g. 20248592 or student@college.edu',
                 prefixIcon: Icon(Icons.person_outline),
               ),
             ),
