@@ -148,7 +148,7 @@ class _StaffAnimatedQueueState extends State<StaffAnimatedQueue> {
         controller: _scrollController,
         physics: const AlwaysScrollableScrollPhysics(),
         initialItemCount: _currentDocs.length,
-        padding: const EdgeInsets.only(top: 8, bottom: 80),
+        padding: const EdgeInsets.only(top: 8, bottom: 120),
         itemBuilder: (context, index, animation) {
           if (index >= _currentDocs.length) return const SizedBox.shrink();
           final doc = _currentDocs[index];

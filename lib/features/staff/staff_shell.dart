@@ -21,6 +21,7 @@ class StaffShell extends ConsumerWidget {
     ref.watch(voiceAnnouncerServiceProvider);
 
     return Scaffold(
+      extendBody: true,
       body: Stack(
         children: [
           AnimatedSwitcher(
@@ -71,49 +72,27 @@ class StaffShell extends ConsumerWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.paddingOf(context).bottom + 8,
-          top: 8,
-          left: 24,
-          right: 24,
-        ),
-        decoration: BoxDecoration(
-          color: StaffTheme.surface,
-          border: const Border(top: BorderSide(color: Color(0xFFF3F4F6))),
-          boxShadow: const [
-            BoxShadow(
-              color: Color(0x08000000),
-              blurRadius: 20,
-              offset: Offset(0, -5),
-            )
-          ],
-        ),
-        child: SizedBox(
+        color: Colors.transparent,
+        padding: const EdgeInsets.only(bottom: 24, left: 40, right: 40),
+        child: Container(
           height: 64,
+          decoration: BoxDecoration(
+            color: StaffTheme.primary,
+            borderRadius: BorderRadius.circular(32),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.25),
+                blurRadius: 15,
+                offset: const Offset(0, 8),
+              ),
+            ],
+          ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildNavItem(
-                context,
-                index: 0,
-                icon: Icons.home_filled,
-                label: 'Dashboard',
-                currentIndex: navigationShell.currentIndex,
-              ),
-              _buildNavItem(
-                context,
-                index: 1,
-                icon: Icons.soup_kitchen,
-                label: 'Kitchen',
-                currentIndex: navigationShell.currentIndex,
-              ),
-              _buildNavItem(
-                context,
-                index: 2,
-                icon: Icons.person,
-                label: 'Profile',
-                currentIndex: navigationShell.currentIndex,
-              ),
+              _buildNavItem(Icons.home_rounded, 0, navigationShell.currentIndex, context),
+              _buildNavItem(Icons.soup_kitchen_rounded, 1, navigationShell.currentIndex, context),
+              _buildNavItem(Icons.person_rounded, 2, navigationShell.currentIndex, context),
             ],
           ),
         ),
@@ -121,49 +100,21 @@ class StaffShell extends ConsumerWidget {
     );
   }
 
-  Widget _buildNavItem(
-    BuildContext context, {
-    required int index,
-    required IconData icon,
-    required String label,
-    required int currentIndex,
-  }) {
-    final isSelected = index == currentIndex;
+  Widget _buildNavItem(IconData icon, int index, int currentIndex, BuildContext context) {
+    bool isActive = index == currentIndex;
     return GestureDetector(
-      behavior: HitTestBehavior.opaque,
       onTap: () => _onItemTapped(index, context),
-      child: SizedBox(
-        width: 64,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: isSelected ? StaffTheme.primary.withOpacity(0.1) : Colors.transparent,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Icon(
-                  icon,
-                  color: isSelected ? StaffTheme.primary : StaffTheme.textSecondary,
-                  size: 24,
-                ),
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: TextStyle(
-                fontFamily: 'Plus Jakarta Sans',
-                fontSize: 10,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                color: isSelected ? StaffTheme.primary : StaffTheme.textSecondary,
-              ),
-            ),
-          ],
+      child: Container(
+        width: 36,
+        height: 36,
+        decoration: BoxDecoration(
+          color: isActive ? Colors.white.withValues(alpha: 0.22) : Colors.transparent,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          icon, 
+          color: Colors.white, 
+          size: 19,
         ),
       ),
     );

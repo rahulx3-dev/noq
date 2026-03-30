@@ -508,7 +508,7 @@ class StaffKitchenScreen extends ConsumerWidget {
 
     return Scrollbar(
       child: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 16, 20, 100),
+        padding: const EdgeInsets.fromLTRB(20, 16, 20, 120),
         physics: const BouncingScrollPhysics(),
         children: [
           if (highDemand.isNotEmpty) _buildHighDemandSection(ref, highDemand),

@@ -24,16 +24,16 @@ class StaffProfileScreen extends ConsumerWidget {
 
             final isAlertsEnabled = profile.orderAlertsEnabled;
 
-            return Column(
+            return ListView(
+              padding: const EdgeInsets.only(bottom: 120),
               children: [
                 _buildHeader(),
                 const SizedBox(height: 16),
                 _buildProfileCard(profile),
                 const SizedBox(height: 24),
                 _buildSettingsSection(ref, isAlertsEnabled),
-                const Spacer(),
+                const SizedBox(height: 40),
                 _buildLogoutButton(ref, context),
-                const SizedBox(height: 32),
               ],
             );
           },
