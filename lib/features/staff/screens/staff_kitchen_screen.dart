@@ -375,7 +375,7 @@ class StaffKitchenScreen extends ConsumerWidget {
             return Expanded(
               child: GestureDetector(
                 onTap: () {
-                  ref.read(staffKitchenTabProvider.notifier).state = tab['id']!;
+                  ref.read(staffKitchenTabProvider.notifier).state = tab['id'] as String;
                   ref.read(staffKitchenSelectedSlotIdProvider.notifier).state = null;
                 },
                 child: AnimatedContainer(
