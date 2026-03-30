@@ -35,6 +35,11 @@ class _StudentNoNetworkScreenState extends State<StudentNoNetworkScreen>
     setState(() => _isChecking = false);
 
     if (hasNetwork) {
+      // Small additional delay to allow the Connectivity plugin to sync its state
+      // before the router's redirect logic re-evaluates.
+      await Future.delayed(const Duration(milliseconds: 500));
+      
+      if (!mounted) return;
       if (context.canPop()) {
         context.pop();
       } else {

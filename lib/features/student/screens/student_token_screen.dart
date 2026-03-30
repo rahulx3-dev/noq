@@ -489,7 +489,7 @@ class _StudentTokenScreenState extends ConsumerState<StudentTokenScreen> {
                         )
                       : ListView.builder(
                           physics: const BouncingScrollPhysics(),
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 120),
                           itemCount: pastOrders.length,
                           itemBuilder: (_, i) {
                             final order = pastOrders[i];

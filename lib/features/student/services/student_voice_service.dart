@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter/services.dart';
-import '../providers/student_orders_provider.dart';
 import 'package:flutter/foundation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../providers/student_orders_provider.dart';
 
 class StudentVoiceService {
   final Ref _ref;
@@ -33,8 +34,15 @@ class StudentVoiceService {
 
         final announceKey = '${orderId}_called';
         
-        // 1. Announce when called for pickup
-        if (isCalled && !_announcedCalls.contains(announceKey)) {
+        final lastCalledAt = order['lastCalledAt'];
+        bool isRecent = true;
+        if (lastCalledAt is Timestamp) {
+          final diff = DateTime.now().difference(lastCalledAt.toDate());
+          isRecent = diff.inMinutes < 2; // Threshold for "recent"
+        }
+
+        // 1. Announce when called for pickup AND is recent
+        if (isCalled && isRecent && !_announcedCalls.contains(announceKey)) {
           _announceCall(tokenNumber);
           _announcedCalls.add(announceKey);
         }

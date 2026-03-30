@@ -1718,74 +1718,203 @@ class _StudentDashboardScreenState
   }
 
   Widget _buildLeftSidebar(StudentDailyMenu? menu) {
+    if (menu == null || !menu.isReleased) {
+      return Drawer(
+        backgroundColor: Colors.white,
+        width: 280,
+        child: Center(
+          child: Text(
+            "Menu not yet available.",
+            style: GoogleFonts.plusJakartaSans(color: StudentTheme.textTertiary),
+          ),
+        ),
+      );
+    }
+
+    final now = DateTime.now();
+    final selectedDate = DateTime.parse(menu.date);
+
+    // Group only non-past sessions
+    final List<StudentMenuSession> visibleSessions = menu.sessions.where((s) {
+      final state = SessionStatusResolver.computeSessionState(
+        selectedDate: selectedDate,
+        now: now,
+        startTimeStr: s.startTime,
+        endTimeStr: s.endTime,
+        isReleased: menu.isReleased,
+      );
+      return !state.isPast;
+    }).toList();
+
     return Drawer(
       backgroundColor: Colors.white,
-      width: 280,
-      elevation: 10,
-      shadowColor: Colors.black.withValues(alpha: 0.1),
+      width: 320, // Slightly wider for restaurant feel
+      elevation: 0,
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(24, 48, 24, 40),
-              child: Row(
+              padding: const EdgeInsets.fromLTRB(28, 40, 24, 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Today's menu",
+                    "The Daily",
                     style: GoogleFonts.plusJakartaSans(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: const Color(0xFF111827), // gray-900
-                      height: 1.2,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w800,
+                      color: const Color(0xFFFF4B3A),
+                      letterSpacing: 3,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    "Flavour Guide",
+                    style: GoogleFonts.plusJakartaSans(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w900,
+                      color: const Color(0xFF111827),
+                      height: 1.1,
                     ),
                   ),
                 ],
               ),
             ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 28),
+              child: Divider(color: Color(0xFFF3F4F6), height: 1),
+            ),
             Expanded(
-              child: menu == null || !menu.isReleased
+              child: visibleSessions.isEmpty
                   ? Center(
-                      child: Text(
-                        "No menu items live.",
-                        style: GoogleFonts.plusJakartaSans(
-                          color: StudentTheme.textTertiary,
-                          fontSize: 14,
+                      child: Padding(
+                        padding: const EdgeInsets.all(40.0),
+                        child: Text(
+                          "Today's meal windows have closed. See you tomorrow!",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.plusJakartaSans(
+                            color: const Color(0xFF9CA3AF),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     )
-                  : ListView(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      children: [
-                        ...menu.sessions.expand((session) {
-                          return session.items.map((item) {
-                            if (item.nameSnapshot.isEmpty) {
-                              return const SizedBox.shrink();
-                            }
-                            return InkWell(
-                              onTap: () {
-                                Navigator.pop(context);
-                                _scrollToSession(session.sessionId);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                  vertical: 12,
-                                ),
-                                child: Text(
-                                  item.nameSnapshot,
-                                  style: GoogleFonts.plusJakartaSans(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0xFF6B7280), // gray-500
+                  : ListView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+                      itemCount: visibleSessions.length,
+                      itemBuilder: (context, sIdx) {
+                        final session = visibleSessions[sIdx];
+                        final items = session.items.where((it) => it.nameSnapshot.isNotEmpty).toList();
+
+                        if (items.isEmpty) return const SizedBox.shrink();
+
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(8, 12, 8, 16),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 4,
+                                    height: 16,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(2),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Text(
+                                    session.sessionNameSnapshot.toUpperCase(),
+                                    style: GoogleFonts.plusJakartaSans(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w900,
+                                      color: const Color(0xFF111827),
+                                      letterSpacing: 2,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            ...items.map((item) {
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 8),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                    _scrollToSession(session.sessionId);
+                                  },
+                                  borderRadius: BorderRadius.circular(16),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16),
+                                      color: Colors.transparent, // Minimalist
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        // Item Image Thumbnail
+                                        Container(
+                                          width: 48,
+                                          height: 48,
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFFF3F4F6),
+                                            borderRadius: BorderRadius.circular(12),
+                                            image: item.imageUrlSnapshot.isNotEmpty
+                                                ? DecorationImage(
+                                                    image: NetworkImage(item.imageUrlSnapshot),
+                                                    fit: BoxFit.cover,
+                                                  )
+                                                : null,
+                                          ),
+                                          child: item.imageUrlSnapshot.isEmpty
+                                              ? const Icon(Icons.fastfood_rounded, size: 20, color: Color(0xFF9CA3AF))
+                                              : null,
+                                        ),
+                                        const SizedBox(width: 16),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                item.nameSnapshot,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: GoogleFonts.plusJakartaSans(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: const Color(0xFF111827),
+                                                ),
+                                              ),
+                                              const SizedBox(height: 2),
+                                              Text(
+                                                '₹${item.priceSnapshot.toInt()}',
+                                                style: GoogleFonts.plusJakartaSans(
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w800,
+                                                  color: const Color(0xFF10B981), // Emerald-500
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        const Icon(
+                                          Icons.chevron_right_rounded,
+                                          size: 20,
+                                          color: Color(0xFFD1D5DB),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          });
-                        }),
-                        const SizedBox(height: 40),
-                      ],
+                              );
+                            }),
+                            const SizedBox(height: 24),
+                          ],
+                        );
+                      },
                     ),
             ),
           ],

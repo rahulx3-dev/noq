@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../app/app_routes.dart';
 import '../../../app/themes/student_theme.dart';
+import '../../../core/providers.dart';
 import '../providers/student_orders_provider.dart';
-// import '../../../core/utils/time_helper.dart';
 
 class StudentOrdersScreen extends ConsumerStatefulWidget {
   const StudentOrdersScreen({super.key});
@@ -22,6 +22,10 @@ class _StudentOrdersScreenState extends ConsumerState<StudentOrdersScreen>
   late TabController _tabController;
   final TextEditingController _searchController = TextEditingController();
   bool _isSearching = false;
+  
+  // Selection State for History
+  bool _isSelectionMode = false;
+  final Set<String> _selectedGroupIds = {};
 
   @override
   void initState() {
@@ -87,20 +91,32 @@ class _StudentOrdersScreenState extends ConsumerState<StudentOrdersScreen>
                   letterSpacing: -0.5,
                 ),
               ),
-        actions: _isSearching
-            ? []
-            : [
-                GestureDetector(
-                  onTap: () => setState(() => _isSearching = true),
-                  child: _buildAppBarAction(Icons.search),
+        actions: _isSelectionMode
+            ? [
+                IconButton(
+                  icon: const Icon(Icons.delete_outline_rounded, color: Colors.red),
+                  onPressed: _selectedGroupIds.isEmpty ? null : _deleteSelectedGroups,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.close_rounded, color: Colors.black),
+                  onPressed: _exitSelectionMode,
                 ),
                 const SizedBox(width: 8),
-                GestureDetector(
-                  onTap: () => context.push('/student/notifications'),
-                  child: _buildAppBarAction(Icons.notifications_none_rounded),
-                ),
-                const SizedBox(width: 20),
-              ],
+              ]
+            : _isSearching
+                ? []
+                : [
+                    GestureDetector(
+                      onTap: () => setState(() => _isSearching = true),
+                      child: _buildAppBarAction(Icons.search),
+                    ),
+                    const SizedBox(width: 8),
+                    GestureDetector(
+                      onTap: () => context.push('/student/notifications'),
+                      child: _buildAppBarAction(Icons.notifications_none_rounded),
+                    ),
+                    const SizedBox(width: 20),
+                  ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
           child: Container(
@@ -155,6 +171,65 @@ class _StudentOrdersScreenState extends ConsumerState<StudentOrdersScreen>
     );
   }
 
+  void _toggleSelection(String groupId) {
+    setState(() {
+      if (_selectedGroupIds.contains(groupId)) {
+        _selectedGroupIds.remove(groupId);
+        if (_selectedGroupIds.isEmpty) {
+          _isSelectionMode = false;
+        }
+      } else {
+        _selectedGroupIds.add(groupId);
+      }
+    });
+  }
+
+  void _exitSelectionMode() {
+    setState(() {
+      _isSelectionMode = false;
+      _selectedGroupIds.clear();
+    });
+  }
+
+  Future<void> _deleteSelectedGroups() async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Hide Orders', style: GoogleFonts.plusJakartaSans(fontWeight: FontWeight.bold)),
+        content: Text('Are you sure you want to hide these orders from your history?', style: GoogleFonts.plusJakartaSans()),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text('Cancel', style: GoogleFonts.plusJakartaSans(color: Colors.grey)),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text('Hide', style: GoogleFonts.plusJakartaSans(color: Colors.red, fontWeight: FontWeight.bold)),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm == true) {
+      try {
+        final ids = _selectedGroupIds.toList();
+        await ref.read(studentOrderServiceProvider).hideCheckoutGroups(ids);
+        _exitSelectionMode();
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Orders hidden from history')),
+          );
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error: $e')),
+          );
+        }
+      }
+    }
+  }
+
   Widget _buildOrdersList(bool isActive) {
     final streamAsync = ref.watch(studentOrdersStreamProvider);
 
@@ -193,7 +268,7 @@ class _StudentOrdersScreenState extends ConsumerState<StudentOrdersScreen>
         final sortedDates = grouped.keys.toList();
 
         return ListView.builder(
-          padding: const EdgeInsets.fromLTRB(24, 24, 24, 100),
+          padding: const EdgeInsets.fromLTRB(24, 24, 24, 160),
           itemCount: sortedDates.length,
           itemBuilder: (context, index) {
             final dateKey = sortedDates[index];
@@ -214,10 +289,62 @@ class _StudentOrdersScreenState extends ConsumerState<StudentOrdersScreen>
                     ),
                   ),
                 ),
-                ...dateOrders.map((order) => Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: _buildOrderCard(order),
-                )),
+                ...dateOrders.map((order) {
+                  final groupId = order['checkoutGroupId'] ?? order['orderId'] ?? 'unknown';
+                  final isSelected = _selectedGroupIds.contains(groupId);
+
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: GestureDetector(
+                      onTap: _isSelectionMode && !isActive
+                          ? () => _toggleSelection(groupId)
+                          : null,
+                      onLongPress: !isActive && !_isSelectionMode
+                          ? () {
+                              setState(() {
+                                _isSelectionMode = true;
+                                _selectedGroupIds.add(groupId);
+                              });
+                            }
+                          : null,
+                      child: Stack(
+                        children: [
+                          _buildOrderCard(order),
+                          if (_isSelectionMode && !isActive)
+                            Positioned(
+                              top: 12,
+                              right: 12,
+                              child: Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  color: isSelected ? Colors.white : Colors.white10,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: isSelected ? Colors.white : Colors.white24,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: Icon(
+                                  isSelected ? Icons.check_rounded : null,
+                                  size: 16,
+                                  color: isSelected ? Colors.black : Colors.transparent,
+                                ),
+                              ),
+                            ),
+                          if (_isSelectionMode && !isActive && isSelected)
+                             Positioned.fill(
+                               child: Container(
+                                 decoration: BoxDecoration(
+                                   color: Colors.white10,
+                                   borderRadius: BorderRadius.circular(28),
+                                 ),
+                               ),
+                             ),
+                        ],
+                      ),
+                    ),
+                  );
+                }),
                 const SizedBox(height: 16),
               ],
             );

@@ -81,9 +81,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       final location = state.matchedLocation;
 
       final isNoNetworkRoute = location.contains('/no-network');
+      final isAllowedOffline = isNoNetworkRoute || location == '/student/token';
 
       // Check connectivity first
-      if (isOffline && !isNoNetworkRoute) {
+      if (isOffline && !isAllowedOffline) {
         // Redirect to appropriate offline screen
         final profile = userProfile.valueOrNull;
         if (profile?.role == UserRole.admin) {
