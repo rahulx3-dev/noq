@@ -77,6 +77,17 @@ class StudentCartNotifier extends StateNotifier<List<StudentCartItem>> {
     state = [];
   }
 
+  /// Set the selected slot for all items in a specific session
+  void setSlotForSession(String sessionId, StudentMenuSlot slot) {
+    state = [
+      for (var c in state)
+        if (c.menuItem.sessionId == sessionId || (sessionId == 'ready_on_order' && c.menuItem.isPreReady))
+          c.copyWith(selectedSlot: slot)
+        else
+          c,
+    ];
+  }
+
   /// Set the selected slot for a specific cart item (by composite key)
   void setSlotForItem(String itemId, String sessionId, StudentMenuSlot slot) {
     final key = '$itemId::$sessionId';

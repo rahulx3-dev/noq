@@ -219,20 +219,89 @@ class _StudentCheckoutScreenState extends ConsumerState<StudentCheckoutScreen> {
                 ),
               ),
               const SizedBox(width: 12),
-              Text(
-                sessionName,
-                style: GoogleFonts.plusJakartaSans(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 18,
-                  color: StudentTheme.primary,
-                  letterSpacing: -0.3,
+              Expanded(
+                child: Text(
+                  sessionName,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.plusJakartaSans(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 18,
+                    color: StudentTheme.primary,
+                    letterSpacing: -0.3,
+                  ),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 20),
           ...items.map(
-            (cartItem) => _buildItemWithSlotPicker(cartItem, filteredSlots, dailyMenu),
+            (cartItem) => _buildItemWithSlotPicker(cartItem, filteredSlots, dailyMenu, items.length > 1),
+          ),
+          if (items.length > 1) _buildSessionWarningIfNeeded(sId, items),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSessionWarningIfNeeded(String sId, List<StudentCartItem> items) {
+    final selectedSlots = items.map((i) => i.selectedSlot?.id).whereType<String>().toSet();
+    if (selectedSlots.length <= 1) return const SizedBox.shrink();
+
+    // Mismatch detected
+    final firstSlot = items.firstWhere((i) => i.selectedSlot != null).selectedSlot!;
+
+    return Container(
+      margin: const EdgeInsets.only(top: 8),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: StudentTheme.statusRed.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: StudentTheme.statusRed.withValues(alpha: 0.2)),
+      ),
+      child: Row(
+        children: [
+          const Icon(Icons.warning_amber_rounded, color: StudentTheme.statusRed, size: 20),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Different pickup times selected.',
+                  style: GoogleFonts.plusJakartaSans(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 13,
+                    color: StudentTheme.statusRed,
+                  ),
+                ),
+                Text(
+                  'This will require multiple trips to the canteen.',
+                  style: GoogleFonts.plusJakartaSans(
+                    fontSize: 11,
+                    color: StudentTheme.statusRed.withValues(alpha: 0.8),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              ref.read(studentCartProvider.notifier).setSlotForSession(sId, firstSlot);
+            },
+            style: TextButton.styleFrom(
+              backgroundColor: StudentTheme.statusRed,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            ),
+            child: Text(
+              'Sync All',
+              style: GoogleFonts.plusJakartaSans(
+                color: Colors.white,
+                fontWeight: FontWeight.w800,
+                fontSize: 11,
+              ),
+            ),
           ),
         ],
       ),
@@ -244,6 +313,7 @@ class _StudentCheckoutScreenState extends ConsumerState<StudentCheckoutScreen> {
     StudentCartItem cartItem,
     List<StudentMenuSlot> availableSlots,
     StudentDailyMenu? dailyMenu,
+    bool hasMultipleItemsInSession,
   ) {
     final item = cartItem.menuItem;
 
@@ -470,6 +540,35 @@ class _StudentCheckoutScreenState extends ConsumerState<StudentCheckoutScreen> {
               }
             },
           ),
+          if (hasMultipleItemsInSession && cartItem.selectedSlot != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 12),
+              child: GestureDetector(
+                onTap: () {
+                  ref.read(studentCartProvider.notifier).setSlotForSession(item.sessionId, cartItem.selectedSlot!);
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.auto_awesome_rounded,
+                      size: 14,
+                      color: Colors.white.withValues(alpha: 0.7),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      'Apply this time to all items in session',
+                      style: GoogleFonts.plusJakartaSans(
+                        color: Colors.white.withValues(alpha: 0.8),
+                        fontSize: 11,
+                        fontWeight: FontWeight.w700,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
         ],
       ),
     );
