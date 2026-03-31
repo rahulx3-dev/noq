@@ -234,14 +234,14 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
               'noq',
               style: GoogleFonts.plusJakartaSans(
                 color: Colors.black,
-                fontSize: 48,
+                fontSize: 64, // Bigger brand for mobile
                 fontWeight: FontWeight.w800,
-                letterSpacing: -3.0,
+                letterSpacing: -4.0,
                 height: 1.0,
               ),
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 32),
         ],
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -284,7 +284,7 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
                         Text(
                           (canteen?.name ?? 'TAMARIND HOUSE').toUpperCase(),
                           style: GoogleFonts.plusJakartaSans(
-                            fontSize: 20,
+                            fontSize: 16, // Adjusted for space
                             fontWeight: FontWeight.w500,
                             color: AdminTheme.textPrimary,
                             letterSpacing: 0.5,
@@ -322,18 +322,19 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
                         orElse: () => 'Admin',
                       );
 
-                      return Row(
+                      return Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        spacing: 8,
                         children: [
                           Text(
                             '$greetingText, $adminName',
                             style: GoogleFonts.plusJakartaSans(
-                              fontSize: isDesktop ? 32 : 24,
-                              fontWeight: FontWeight.w600, // Less bold
+                              fontSize: isDesktop ? 32 : 20,
+                              fontWeight: FontWeight.w600,
                               color: AdminTheme.textPrimary,
                               letterSpacing: -0.5,
                             ),
                           ),
-                          const SizedBox(width: 12),
                           Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 10,
@@ -387,13 +388,7 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
                 ],
               )
             else
-              Row(
-                children: [
-                  _buildDateDropdown(),
-                  const SizedBox(width: 12),
-                  _buildNotificationIcon(context),
-                ],
-              ),
+              _buildNotificationIcon(context),
           ],
         ),
       ],
@@ -968,31 +963,23 @@ class _AdminDashboardScreenState extends ConsumerState<AdminDashboardScreen> {
       ),
     ];
 
-    return isDesktop
-        ? Row(
-            children: actions
-                .map(
-                  (a) => Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        right: a == actions.last ? 0 : 16,
-                      ),
-                      child: _buildQuickActionCard(context, a),
-                    ),
-                  ),
-                )
-                .toList(),
-          )
-        : Column(
-            children: actions
-                .map(
-                  (a) => Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: _buildQuickActionCard(context, a),
-                  ),
-                )
-                .toList(),
-          );
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final crossAxisCount = constraints.maxWidth > 1200 ? 4 : (constraints.maxWidth > 700 ? 2 : 1);
+        return GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            mainAxisExtent: 100,
+          ),
+          itemCount: actions.length,
+          itemBuilder: (context, index) => _buildQuickActionCard(context, actions[index]),
+        );
+      },
+    );
   }
 
   Widget _buildQuickActionCard(BuildContext context, _ActionData data) {

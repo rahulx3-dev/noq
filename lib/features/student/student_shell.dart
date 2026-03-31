@@ -12,6 +12,7 @@ import '../../core/widgets/app_notification_banner.dart';
 import 'services/student_voice_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../app/themes/student_theme.dart';
+import '../../core/providers.dart';
 
 class StudentShell extends ConsumerWidget {
   final StatefulNavigationShell navigationShell;
@@ -106,77 +107,158 @@ class StudentShell extends ConsumerWidget {
 
     final currentAlert = ref.watch(studentAlertProvider);
 
-    return Scaffold(
-      extendBody: true,
-      body: Stack(
-        children: [
-          AnimatedSwitcher(
-            duration: AppMotionTokens.standard,
-            transitionBuilder: (Widget child, Animation<double> animation) {
-              return FadeTransition(
-                opacity: animation,
-                child: SlideTransition(
-                  position: Tween<Offset>(
-                    begin: const Offset(0.01, 0),
-                    end: Offset.zero,
-                  ).animate(animation),
-                  child: child,
-                ),
-              );
-            },
-            child: navigationShell,
-          ),
-          if (currentAlert != null)
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: SafeArea(
-                child: AppNotificationBanner(
-                  title: currentAlert.title,
-                  body: currentAlert.body,
-                  token: currentAlert.token,
-                  type: currentAlert.type,
-                  onViewOrder: () {
-                    ref.read(studentAlertProvider.notifier).dismiss();
-                    context.go(AppRoutes.studentToken);
-                  },
-                  onViewMenu: () {
-                    ref.read(studentAlertProvider.notifier).dismiss();
-                    context.go(AppRoutes.studentDashboard);
-                  },
-                  onDismiss: () {
-                    ref.read(studentAlertProvider.notifier).dismiss();
-                  },
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isDesktop = constraints.maxWidth >= 1100;
+        final isMobile = constraints.maxWidth < 600;
+
+        return Scaffold(
+          extendBody: true,
+          body: Row(
+            children: [
+              if (isDesktop) _buildStudentSidebar(context, ref),
+              Expanded(
+                child: Stack(
+                  children: [
+                    AnimatedSwitcher(
+                      duration: AppMotionTokens.standard,
+                      transitionBuilder: (Widget child, Animation<double> animation) {
+                        return FadeTransition(
+                          opacity: animation,
+                          child: SlideTransition(
+                            position: Tween<Offset>(
+                              begin: const Offset(0.01, 0),
+                              end: Offset.zero,
+                            ).animate(animation),
+                            child: child,
+                          ),
+                        );
+                      },
+                      child: navigationShell,
+                    ),
+                    if (currentAlert != null)
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: SafeArea(
+                          child: AppNotificationBanner(
+                            title: currentAlert.title,
+                            body: currentAlert.body,
+                            token: currentAlert.token,
+                            type: currentAlert.type,
+                            onViewOrder: () {
+                              ref.read(studentAlertProvider.notifier).dismiss();
+                              context.go(AppRoutes.studentToken);
+                            },
+                            onViewMenu: () {
+                              ref.read(studentAlertProvider.notifier).dismiss();
+                              context.go(AppRoutes.studentDashboard);
+                            },
+                            onDismiss: () {
+                              ref.read(studentAlertProvider.notifier).dismiss();
+                            },
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
               ),
+            ],
+          ),
+          bottomNavigationBar: isDesktop
+              ? null
+              : Container(
+                  color: Colors.transparent,
+                  padding: EdgeInsets.only(
+                    bottom: isMobile ? 18 : 32,
+                    left: isMobile ? 40 : 80,
+                    right: isMobile ? 40 : 80,
+                  ),
+                  child: Container(
+                    height: 64,
+                    decoration: BoxDecoration(
+                      color: StudentTheme.primary,
+                      borderRadius: BorderRadius.circular(32),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.25),
+                          blurRadius: 15,
+                          offset: const Offset(0, 8),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _navItem(Icons.home_rounded, 0, navigationShell.currentIndex, context),
+                        _navItem(Icons.receipt_long_rounded, 1, navigationShell.currentIndex, context),
+                        _navItem(Icons.confirmation_num_rounded, 2, navigationShell.currentIndex, context),
+                        _navItem(Icons.person_rounded, 3, navigationShell.currentIndex, context),
+                      ],
+                    ),
+                  ),
+                ),
+        );
+      },
+    );
+  }
+
+  Widget _buildStudentSidebar(BuildContext context, WidgetRef ref) {
+    final selectedIndex = navigationShell.currentIndex;
+    return Container(
+      width: 280,
+      decoration: const BoxDecoration(
+        color: StudentTheme.primary,
+        border: Border(right: BorderSide(color: Colors.white10)),
+      ),
+      child: Column(
+        children: [
+          const SizedBox(height: 64),
+          Text(
+            'noq',
+            style: GoogleFonts.plusJakartaSans(
+              color: Colors.white,
+              fontSize: 48,
+              fontWeight: FontWeight.w800,
+              letterSpacing: -3,
             ),
+          ),
+          const SizedBox(height: 64),
+          _sidebarItem(Icons.home_rounded, 'Dashboard', 0, selectedIndex, context),
+          _sidebarItem(Icons.receipt_long_rounded, 'Orders', 1, selectedIndex, context),
+          _sidebarItem(Icons.confirmation_num_rounded, 'Token', 2, selectedIndex, context),
+          _sidebarItem(Icons.person_rounded, 'Profile', 3, selectedIndex, context),
+          const Spacer(),
+          ListTile(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            leading: const Icon(Icons.logout_rounded, color: Colors.white70),
+            title: Text(
+              'Logout',
+              style: GoogleFonts.plusJakartaSans(color: Colors.white70, fontWeight: FontWeight.w600),
+            ),
+            onTap: () => ref.read(authServiceProvider).signOut(),
+          ),
+          const SizedBox(height: 32),
         ],
       ),
-      bottomNavigationBar: Container(
-        color: Colors.transparent,
-        padding: const EdgeInsets.only(bottom: 18, left: 40, right: 40),
-        child: Container(
-          height: 64,
-          decoration: BoxDecoration(
-            color: StudentTheme.primary,
-            borderRadius: BorderRadius.circular(32),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.25),
-                blurRadius: 15,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _navItem(Icons.home_rounded, 0, navigationShell.currentIndex, context),
-              _navItem(Icons.receipt_long_rounded, 1, navigationShell.currentIndex, context),
-              _navItem(Icons.confirmation_num_rounded, 2, navigationShell.currentIndex, context),
-              _navItem(Icons.person_rounded, 3, navigationShell.currentIndex, context),
-            ],
+    );
+  }
+
+  Widget _sidebarItem(IconData icon, String label, int index, int currentIndex, BuildContext context) {
+    bool isActive = index == currentIndex;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      child: ListTile(
+        onTap: () => _onItemTapped(index, context),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        tileColor: isActive ? Colors.white.withValues(alpha: 0.1) : Colors.transparent,
+        leading: Icon(icon, color: isActive ? Colors.white : Colors.white60),
+        title: Text(
+          label,
+          style: GoogleFonts.plusJakartaSans(
+            color: isActive ? Colors.white : Colors.white60,
+            fontWeight: isActive ? FontWeight.w700 : FontWeight.w500,
           ),
         ),
       ),

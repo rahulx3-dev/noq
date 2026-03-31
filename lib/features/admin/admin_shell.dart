@@ -53,7 +53,8 @@ class AdminShell extends ConsumerWidget {
       data: AdminTheme.theme(context),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final isDesktop = constraints.maxWidth > 900;
+          final isDesktop = constraints.maxWidth >= 1100;
+          final isMobile = constraints.maxWidth < 600;
 
           return Scaffold(
             body: Stack(
@@ -112,6 +113,10 @@ class AdminShell extends ConsumerWidget {
                 : BottomNavigationBar(
                     currentIndex: navigationShell.currentIndex,
                     onTap: (index) => _onItemTapped(index, context),
+                    type: BottomNavigationBarType.fixed,
+                    selectedItemColor: AdminTheme.primary,
+                    unselectedItemColor: Colors.grey,
+                    elevation: isMobile ? 8 : 0,
                     items: const [
                       BottomNavigationBarItem(
                         icon: Icon(Icons.dashboard_outlined),
