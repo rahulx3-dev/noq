@@ -478,51 +478,59 @@ class _StudentTokenScreenState extends ConsumerState<StudentTokenScreen> {
                   ),
                 ),
                 Expanded(
-                  child: pastOrders.isEmpty
-                      ? Center(
+                  child: Consumer(
+                    builder: (context, ref, _) {
+                      final updatedPastOrders = ref.watch(studentOrderHistoryProvider);
+                      
+                      if (updatedPastOrders.isEmpty) {
+                        return Center(
                           child: Text(
                             'No past tokens found',
                             style: GoogleFonts.plusJakartaSans(
                               color: Colors.grey.shade400,
                             ),
                           ),
-                        )
-                      : ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 120),
-                          itemCount: pastOrders.length,
-                          itemBuilder: (_, i) {
-                            final order = pastOrders[i];
-                            final groupId =
-                                order['checkoutGroupId'] ?? order['orderId'];
-                            final isSelected = selectedGroups.contains(groupId);
+                        );
+                      }
+                      
+                      return ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 120),
+                        itemCount: updatedPastOrders.length,
+                        itemBuilder: (_, i) {
+                          final order = updatedPastOrders[i];
+                          final groupId =
+                              order['checkoutGroupId'] ?? order['orderId'];
+                          final isSelected = selectedGroups.contains(groupId);
 
-                            return _PastTokenCard(
-                              order: order,
-                              isSelectionMode: isSelectionMode,
-                              isSelected: isSelected,
-                              onTap: () {
-                                if (isSelectionMode) {
-                                  setModalState(() {
-                                    if (isSelected) {
-                                      selectedGroups.remove(groupId);
-                                    } else {
-                                      selectedGroups.add(groupId);
-                                    }
-                                  });
-                                }
-                              },
-                              onLongPress: () {
-                                if (!isSelectionMode) {
-                                  setModalState(() {
-                                    isSelectionMode = true;
+                          return _PastTokenCard(
+                            order: order,
+                            isSelectionMode: isSelectionMode,
+                            isSelected: isSelected,
+                            onTap: () {
+                              if (isSelectionMode) {
+                                setModalState(() {
+                                  if (isSelected) {
+                                    selectedGroups.remove(groupId);
+                                  } else {
                                     selectedGroups.add(groupId);
-                                  });
-                                }
-                              },
-                            );
-                          },
-                        ),
+                                  }
+                                });
+                              }
+                            },
+                            onLongPress: () {
+                              if (!isSelectionMode) {
+                                setModalState(() {
+                                  isSelectionMode = true;
+                                  selectedGroups.add(groupId);
+                                });
+                              }
+                            },
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
               ],
             ),

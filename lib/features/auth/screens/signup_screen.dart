@@ -152,48 +152,40 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   ),
                 ),
                 const SizedBox(height: 32),
-                _buildFieldLabel('Full Name', theme),
-                const SizedBox(height: 8),
                 TextField(
                   controller: _nameController,
                   style: GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w500),
                   decoration: const InputDecoration(
-                    hintText: 'e.g. Tolemi Anderson',
+                    labelText: 'Full Name',
                     prefixIcon: Icon(Icons.person_outline),
                   ),
                 ),
                 const SizedBox(height: 20),
-                _buildFieldLabel('Student ID', theme),
-                const SizedBox(height: 8),
                 TextField(
                   controller: _studentIdController,
                   style: GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w500),
                   decoration: const InputDecoration(
-                    hintText: 'e.g. 20248592',
+                    labelText: 'Student ID',
                     prefixIcon: Icon(Icons.badge_outlined),
                   ),
                 ),
                 const SizedBox(height: 20),
-                _buildFieldLabel('College Email', theme),
-                const SizedBox(height: 8),
                 TextField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   style: GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w500),
                   decoration: const InputDecoration(
-                    hintText: 'student@college.edu',
+                    labelText: 'College Email',
                     prefixIcon: Icon(Icons.email_outlined),
                   ),
                 ),
                 const SizedBox(height: 20),
-                _buildFieldLabel('Create Password', theme),
-                const SizedBox(height: 8),
                 TextField(
                   controller: _passwordController,
                   obscureText: _obscurePassword,
                   style: GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w500),
                   decoration: InputDecoration(
-                    hintText: '••••••••',
+                    labelText: 'Create Password',
                     prefixIcon: const Icon(Icons.lock_outline),
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -209,14 +201,12 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                 ),
                 AppPasswordValidator(password: _passwordController.text),
                 const SizedBox(height: 20),
-                _buildFieldLabel('Confirm Password', theme),
-                const SizedBox(height: 8),
                 TextField(
                   controller: _confirmPasswordController,
                   obscureText: _obscureConfirmPassword,
                   style: GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w500),
                   decoration: InputDecoration(
-                    hintText: '••••••••',
+                    labelText: 'Confirm Password',
                     prefixIcon: const Icon(Icons.lock_reset),
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -275,17 +265,6 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildFieldLabel(String label, ThemeData theme) {
-    return Text(
-      label,
-      style: GoogleFonts.plusJakartaSans(
-        fontSize: 14,
-        fontWeight: FontWeight.w700,
-        color: theme.primaryColor,
       ),
     );
   }

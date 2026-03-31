@@ -143,7 +143,7 @@ class _StudentEditProfileScreenState
       body: Stack(
         children: [
           SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(24, 24, 24, 140),
+            padding: const EdgeInsets.fromLTRB(24, 24, 24, 180),
             child: Form(
               key: _formKey,
               child: Column(

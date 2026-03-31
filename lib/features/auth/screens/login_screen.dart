@@ -137,25 +137,21 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 40),
-                _buildFieldLabel('ID or Email', theme),
-                const SizedBox(height: 8),
                 TextField(
                   controller: _idEmailController,
                   style: GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w500),
                   decoration: const InputDecoration(
-                    hintText: 'e.g. 20248592 or email@college.edu',
+                    labelText: 'ID or Email',
                     prefixIcon: Icon(Icons.person_outline),
                   ),
                 ),
                 const SizedBox(height: 20),
-                _buildFieldLabel('Password', theme),
-                const SizedBox(height: 8),
                 TextField(
                   controller: _passwordController,
                   obscureText: _obscurePassword,
                   style: GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w500),
                   decoration: InputDecoration(
-                    hintText: '••••••••',
+                    labelText: 'Password',
                     prefixIcon: const Icon(Icons.lock_outline),
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -228,20 +224,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildFieldLabel(String label, ThemeData theme) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(
-        label,
-        style: GoogleFonts.plusJakartaSans(
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-          color: theme.primaryColor,
         ),
       ),
     );

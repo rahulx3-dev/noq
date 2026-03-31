@@ -34,6 +34,8 @@ class AuthTheme {
           borderSide: const BorderSide(color: primaryColor, width: 1.5),
         ),
         hintStyle: GoogleFonts.plusJakartaSans(color: lightText, fontSize: 14),
+        labelStyle: GoogleFonts.plusJakartaSans(color: lightText, fontSize: 14),
+        floatingLabelStyle: GoogleFonts.plusJakartaSans(color: primaryColor, fontSize: 12, fontWeight: FontWeight.w700),
         prefixIconColor: lightText,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
