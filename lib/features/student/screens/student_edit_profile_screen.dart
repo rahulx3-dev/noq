@@ -143,7 +143,7 @@ class _StudentEditProfileScreenState
       body: Stack(
         children: [
           SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(24, 24, 24, 180),
+            padding: const EdgeInsets.fromLTRB(24, 24, 24, 140),
             child: Form(
               key: _formKey,
               child: Column(
@@ -253,60 +253,41 @@ class _StudentEditProfileScreenState
                     icon: Icons.mail_outline_rounded,
                     enabled: false,
                   ),
-                ],
-              ),
-            ),
-          ),
+                  const SizedBox(height: 48),
 
-          // Save Changes Bottom Bar from Stitch
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(24, 24, 24, 40),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    StudentTheme.background.withValues(alpha: 0),
-                    StudentTheme.background.withValues(alpha: 0.9),
-                    StudentTheme.background,
-                  ],
-                ),
-              ),
-              child: SizedBox(
-                width: double.infinity,
-                height: 64,
-                child: ElevatedButton(
-                  onPressed: _isLoading ? null : _saveProfile,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: StudentTheme.primaryOrange,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    elevation: 10,
-                    shadowColor: StudentTheme.primaryOrange.withValues(alpha: 0.4),
-                  ),
-                  child: _isLoading
-                      ? const SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: CircularProgressIndicator(
-                            color: Colors.white,
-                            strokeWidth: 2,
-                          ),
-                        )
-                      : Text(
-                          'Save Changes',
-                          style: GoogleFonts.splineSans(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w800,
-                          ),
+                  // Save Changes Button (Inside scrollable content)
+                  SizedBox(
+                    width: double.infinity,
+                    height: 64,
+                    child: ElevatedButton(
+                      onPressed: _isLoading ? null : _saveProfile,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: StudentTheme.primaryOrange,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                ),
+                        elevation: 0, // Simplified for inline
+                      ),
+                      child: _isLoading
+                          ? const SizedBox(
+                              height: 24,
+                              width: 24,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
+                              ),
+                            )
+                          : Text(
+                              'Save Changes',
+                              style: GoogleFonts.splineSans(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

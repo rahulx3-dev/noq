@@ -72,6 +72,9 @@ class _VerifyEmailScreenState extends ConsumerState<VerifyEmailScreen> {
       final updatedUser = FirebaseAuth.instance.currentUser;
 
       if (updatedUser != null && updatedUser.emailVerified) {
+        // Force token refresh to ensure router/providers see the verified status
+        await updatedUser.getIdToken(true);
+        
         final firestore = ref.read(firestoreServiceProvider);
         final profileDoc = await firestore.getUserProfile(updatedUser.uid);
         
@@ -86,6 +89,8 @@ class _VerifyEmailScreenState extends ConsumerState<VerifyEmailScreen> {
               destination = AppRoutes.staffDashboard;
             }
             
+            // Invalidate profile provider to ensure fresh data on dashboard
+            ref.invalidate(userProfileProvider);
             context.go(destination);
           } else {
             context.go(AppRoutes.studentDashboard);
@@ -95,7 +100,7 @@ class _VerifyEmailScreenState extends ConsumerState<VerifyEmailScreen> {
         if (mounted) {
           showAppMessage(
             context,
-            'Email not yet verified. Please check your inbox.',
+            'Email not yet verified. Please check your inbox or try again in a moment.',
           );
         }
       }

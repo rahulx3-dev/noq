@@ -134,13 +134,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
             ),
             const SizedBox(height: 40),
-            _buildFieldLabel('Student Email or ID', theme),
+            _buildFieldLabel('ID or Email', theme),
             const SizedBox(height: 8),
             TextField(
               controller: _idEmailController,
               style: GoogleFonts.plusJakartaSans(fontSize: 14, fontWeight: FontWeight.w500),
               decoration: const InputDecoration(
-                hintText: 'e.g. 20248592 or student@college.edu',
+                hintText: 'e.g. 20248592 or email@college.edu',
                 prefixIcon: Icon(Icons.person_outline),
               ),
             ),

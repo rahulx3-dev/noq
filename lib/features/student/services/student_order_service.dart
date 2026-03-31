@@ -355,14 +355,15 @@ class StudentOrderService {
     final user = _auth.currentUser;
     if (user == null) throw Exception('User not logged in');
 
-    // Chunk because of whereIn limit (30)
+    // Chunk because of whereIn limit (30 per query)
     for (var i = 0; i < checkoutGroupIds.length; i += 10) {
       final chunk = checkoutGroupIds.sublist(
         i,
         (i + 10) > checkoutGroupIds.length ? checkoutGroupIds.length : (i + 10),
       );
 
-      final query = await _db
+      // Query 1: Match by checkoutGroupId
+      final query1 = await _db
           .collection('canteens')
           .doc(_canteenId)
           .collection('orders')
@@ -370,16 +371,31 @@ class StudentOrderService {
           .where('checkoutGroupId', whereIn: chunk)
           .get();
 
-      if (query.docs.isEmpty) continue;
+      // Query 2: Match by orderId (fallback for legacy or direct order IDs)
+      final query2 = await _db
+          .collection('canteens')
+          .doc(_canteenId)
+          .collection('orders')
+          .where('studentUid', isEqualTo: user.uid)
+          .where('orderId', whereIn: chunk)
+          .get();
 
       final batch = _db.batch();
-      for (var doc in query.docs) {
+      final seenDocIds = <String>{};
+
+      for (var doc in [...query1.docs, ...query2.docs]) {
+        if (seenDocIds.contains(doc.id)) continue;
+        seenDocIds.add(doc.id);
+        
         batch.update(doc.reference, {
           'isHiddenByStudent': true,
           'updatedAt': FieldValue.serverTimestamp(),
         });
       }
-      await batch.commit();
+
+      if (seenDocIds.isNotEmpty) {
+        await batch.commit();
+      }
     }
   }
 }
